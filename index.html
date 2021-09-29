@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+	<link rel="manifest" href="/assets/images/site.webmanifest">
+	<link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-config" content="/assets/images/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+
+	<title>Karmitt - Отдай даром</title>
+
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css?v1"/>
+</head>
+
+<body>
+	<div id="layout">
+		<header>
+			<div class="holder wrap">
+				<a href="/" id="logo"><img src="/assets/images/logo.svg" alt="Karmitt - Отдай даром" title="Karmitt - Отдай даром"></a>
+
+				<a href="#modal-login" class="btn js-modal-link" id="btn-login">Войти</a>
+				<a href="add_item.html" id="add-item"><span>Добавить предмет</span></a>
+			</div>
+		</header>
+
+		<main>
+			<div class="holder">
+				<h1>Предметы</h1>
+
+				<div class="cols">
+					<aside class="col">
+						<nav id="mn-side">
+							<ul class="js-fadeout fadeout" data-mobile-only="true" data-max-width="1000">
+								<li class="selected"><a href="#">Отмеченные <span><img src="/assets/images/ico_star.svg" alt="Отмеченные" title="Отмеченные" class="svg"></span></a></li>
+								<li class="partners"><a href="partners.html">Партнеры <span><img src="/assets/images/ico_karmitt.svg" alt="Партнеры" title="Партнеры" class="svg"></span></a></li>
+								<li class="toys"><a href="category.html">Игрушки <span><img src="/assets/images/ico_toy.svg" alt="Игрушки" title="Игрушки" class="svg"></span></a></li>
+								<li class="clothing"><a href="category.html">Одежда <span><img src="/assets/images/ico_clothing.svg" alt="Одежда" title="Одежда" class="svg"></span></a></li>
+								<li class="books"><a href="category.html">Книги <span><img src="/assets/images/ico_book.svg" alt="Книги" title="Книги" class="svg"></span></a></li>
+								<li class="sport"><a href="category.html">Спорт <span><img src="/assets/images/ico_sport.svg" alt="Спорт" title="Спорт" class="svg"></span></a></li>
+								<li class="tv"><a href="category.html">ТВ <span><img src="/assets/images/ico_tv.svg" alt="ТВ" title="ТВ" class="svg"></span></a></li>
+							</ul>
+						</nav>
+					</aside>
+
+					<section id="catalogue" class="col">
+						<div class="tools-r">
+							<div class="tabs">
+								<ul id="view-type">
+									<li class="list">
+										<a href="#view-type-list" class="tab-act">
+											<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M6.36693 11.5104C7.66846 11.5104 8.71153 12.5637 8.71153 13.8745V17.0213C8.71153 18.3228 7.66846 19.3844 6.36693 19.3844H3.24695C1.95465 19.3844 0.902344 18.3228 0.902344 17.0213V13.8745C0.902344 12.5637 1.95465 11.5104 3.24695 11.5104H6.36693ZM17.0193 11.5104C18.3116 11.5104 19.3639 12.5637 19.3639 13.8745V17.0213C19.3639 18.3228 18.3116 19.3844 17.0193 19.3844H13.8993C12.5978 19.3844 11.5547 18.3228 11.5547 17.0213V13.8745C11.5547 12.5637 12.5978 11.5104 13.8993 11.5104H17.0193ZM6.36693 0.922852C7.66846 0.922852 8.71153 1.98441 8.71153 3.28689V6.4337C8.71153 7.74449 7.66846 8.79682 6.36693 8.79682H3.24695C1.95465 8.79682 0.902344 7.74449 0.902344 6.4337V3.28689C0.902344 1.98441 1.95465 0.922852 3.24695 0.922852H6.36693ZM17.0193 0.922852C18.3116 0.922852 19.3639 1.98441 19.3639 3.28689V6.4337C19.3639 7.74449 18.3116 8.79682 17.0193 8.79682H13.8993C12.5978 8.79682 11.5547 7.74449 11.5547 6.4337V3.28689C11.5547 1.98441 12.5978 0.922852 13.8993 0.922852H17.0193Z"/>
+											</svg> 
+											<span>Списком</span>
+										</a>
+									</li>
+									<li class="map">
+										<a href="#view-type-map">
+											<svg viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M8.99345 0C13.6561 0 17.5 3.71789 17.5 8.31776C17.5 10.6357 16.657 12.7876 15.2695 14.6116C13.7388 16.6235 11.8522 18.3765 9.72854 19.7524C9.24251 20.0704 8.80387 20.0944 8.27045 19.7524C6.13474 18.3765 4.24809 16.6235 2.7305 14.6116C1.34198 12.7876 0.5 10.6357 0.5 8.31776C0.5 3.71789 4.34388 0 8.99345 0ZM8.99345 5.77683C7.45166 5.77683 6.19423 7.0478 6.19423 8.57675C6.19423 10.1177 7.45166 11.3297 8.99345 11.3297C10.5362 11.3297 11.8058 10.1177 11.8058 8.57675C11.8058 7.0478 10.5362 5.77683 8.99345 5.77683Z"/>
+											</svg> 
+											<span>На карте</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div id="view-type-list">
+							<div id="search">
+								<form action="search.html" method="post">
+									<input type="text" name="keyword" maxlength="255" placeholder="Поиск">
+									<input type="image" src="/assets/images/ico_search.svg" alt="Искать">
+									<div class="tool"></div>
+								</form>
+							</div>
+
+							<ul class="items">
+								<li>
+									<a href="item.html" style="background-image: url('/assets/images/_item1.jpg')">
+										<span class="title"><strong>Классная игрушка LEGO в виде человека в костюме курицы</strong></span>
+										<span class="time-left"><span>Осталось</span> 1 д 20 ч</span>
+										<span class="selected"></span>
+									</a>
+								</li>
+								<li>
+									<a href="item.html" style="background-image: url('/assets/images/_item2.jpg')">
+										<span class="title"><strong>Новый утюг Bosch</strong></span>
+										<span class="time-left hot"><span>Осталось</span> 20 м</span>
+										<span class="selected"></span>
+									</a>
+								</li>
+								<li>
+									<a href="item.html" style="background-image: url('/assets/images/_item3.jpg')">
+										<span class="title"><strong>Отдам баскетбольный мяч</strong></span>
+										<span class="time-left"><span>Осталось</span> 8 ч</span>
+										<span class="selected act"></span>
+									</a>
+								</li>
+								<li>
+									<a href="item.html" style="background-image: url('/assets/images/_item4.jpg')">
+										<span class="title"><strong>Игрушка халка практически новая</strong></span>
+										<span class="time-left"><span>Осталось</span> 19 ч</span>
+										<span class="selected"></span>
+									</a>
+								</li>
+								<li>
+									<a href="item.html" style="background-image: url('/assets/images/_item4.jpg')">
+										<span class="title"><strong>Игрушка халка практически новая</strong></span>
+										<span class="time-left"><span>Осталось</span> 19 ч</span>
+										<span class="selected"></span>
+									</a>
+								</li>
+								<li>
+									<a href="item.html" style="background-image: url('/assets/images/_item1.jpg')">
+										<span class="title"><strong>Классная игрушка LEGO в виде человека в костюме курицы</strong></span>
+										<span class="time-left"><span>Осталось</span> 1 д 20 ч</span>
+										<span class="selected"></span>
+									</a>
+								</li>
+								<li class="advertisement">
+									<a href="donate.html" style="background-color: #E7F4FF;background-image: url('/assets/images/_donate1.png');">
+										<strong class="header">Помогайте животным в&nbsp;приютах</strong>
+										<span>Перейдите для информации</span>
+									</a>
+								</li>
+								<li>
+									<a href="item.html" style="background-image: url('/assets/images/_item2.jpg')">
+										<span class="title"><strong>Новый утюг Bosch</strong></span>
+										<span class="time-left hot"><span>Осталось</span> 20 м</span>
+										<span class="selected"></span>
+									</a>
+								</li>
+								<li>
+									<a href="item.html" style="background-image: url('/assets/images/_item5.jpg')">
+										<span class="title"><strong>Новый зеленый свитер</strong></span>
+										<span class="time-left"><span>Осталось</span> 11 ч</span>
+										<span class="selected"></span>
+									</a>
+								</li>
+								<li>
+									<a href="item.html" style="background-image: url('/assets/images/_item3.jpg')">
+										<span class="title"><strong>Отдам баскетбольный мяч</strong></span>
+										<span class="time-left"><span>Осталось</span> 8 ч</span>
+										<span class="selected act"></span>
+									</a>
+								</li>
+								<li>
+									<a href="item.html" style="background-image: url('/assets/images/_item4.jpg')">
+										<span class="title"><strong>Игрушка халка практически новая</strong></span>
+										<span class="time-left"><span>Осталось</span> 19 ч</span>
+										<span class="selected"></span>
+									</a>
+								</li>
+								<li class="add-item">
+									<a href="add_item.html">Добавить предмет</a>
+								</li>
+							</ul>
+						</div>
+
+						<div id="view-type-map">
+							<div id="map">
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</main>
+
+		<footer>
+			<div class="holder wrap">
+				<a href="/" id="logo-footer"><img src="/assets/images/logo.svg" alt="Karmitt - Отдай даром" title="Karmitt - Отдай даром"></a>
+
+				<div id="copyright">&copy; 2021 Karmitt</div>
+				<div id="mn-conditions"><a href="#">Условия использования</a><a href="#">Партнерам</a></div>
+
+				<div id="social-media">Мы в соц.сетях
+					<ul>
+						<li><a href="#"><img src="/assets/images/ico_ss_vk.svg" alt="Вконтакте" title="Вконтакте"></a></li>
+						<li><a href="#"><img src="/assets/images/ico_ss_fb.svg" alt="Facebook" title="Facebook"></a></li>
+						<li><a href="#"><img src="/assets/images/ico_ss_in.svg" alt="Instagram" title="Instagram"></a></li>
+					</ul>
+				</div>
+				<div id="mobile-app">Мобильное приложение
+					<ul>
+						<li><a href="#"><img src="/assets/images/btn_app_as.svg" alt="Приложение в Apple Store" title="Приложение в Apple Store"></a></li>
+						<li><a href="#"><img src="/assets/images/btn_app_gp.svg" alt="Приложение в Google Play" title="Приложение в Google Play"></a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<div id="modal-fadeout"></div>
+
+	<div class="modal-wrapper" id="modal-login">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-close" title="Закрыть"></div>
+
+				<div class="h1">Познакомимся?</div>
+				<div class="h2">Войдите через социальную сеть</div>
+				<ul class="login-social-media">
+					<li><a href="#"><img src="/assets/images/ico_login_fb.svg" alt="Войти через Facebook" title="Войти через Facebook"></a></li>
+					<li><a href="#"><img src="/assets/images/ico_login_google.svg" alt="Войти через Google" title="Войти через Google"></a></li>
+				</ul>
+
+				<div class="h2">Войдите через e-mail</div>
+				<div class="form" id="form-start">
+					<form action="#" method="post">
+						<div class="input">
+							<input type="email" name="email" placeholder="E-mail" maxlength="255">
+							<i>E-mail</i>
+						</div>
+						<button class="btn" disabled="disabled">На старт!</button>
+					</form>
+				</div>
+				<div class="form hidden" id="form-authorisation">
+					<form action="#" method="post">
+						<div class="input input-clearing">
+							<input type="email" name="email" placeholder="E-mail" maxlength="255">
+							<i>E-mail</i>
+							<span class="tool"></span>
+						</div>
+						<div class="input input-password hidden">
+							<input type="password" name="password" placeholder="Пароль" maxlength="255">
+							<i>Пароль</i>
+							<span class="tool"></span>
+						</div>
+						<a href="#modal-forget" class="forget js-modal-link">Я не помню пароль</a>
+						<button class="btn" disabled="disabled">Войти</button>
+					</form>
+				</div>
+				<div class="conditions">Используя данный сайт Вы принимаете <a href="#" target="_blank">Условия использования</a> и <a href="#" target="_blank">Политику конфиденциальности</a></div>
+				<div class="continue"><a href="#" class="js-cancel">Продолжить без авторизации</a></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-wrapper" id="modal-forget">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-close" title="Закрыть"></div>
+
+				<div class="h1">Новый пароль</div>
+				<div class="h2">Введите новый пароль</div>
+				<div class="form" id="form-forget">
+					<form action="#" method="post">
+						<div class="input input-password hidden">
+							<input type="password" name="password" placeholder="Новый пароль" maxlength="255">
+							<i>Новый пароль</i>
+							<span class="tool"></span>
+						</div>
+						<div class="input input-password hidden">
+							<input type="password" name="password2" placeholder="Повторите новый пароль" maxlength="255">
+							<i>Повторите новый пароль</i>
+							<span class="tool"></span>
+						</div>
+						<!-- ДЕМО ОШИБКИ
+						<div class="message error">Пароли не совпадают</div>
+						-->
+						<button class="btn js-modal-link" disabled="disabled" data-target="#modal-confirmation-code">Сменить пароль</button>
+					</form>
+				</div>
+				<a href="#modal-login" class="forget js-modal-link">Не менять пароль</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-wrapper" id="modal-confirmation-code">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-close" title="Закрыть"></div>
+
+				<div class="h1">Подтверждение</div>
+				<div class="h2">Введите четырехзначный код, который мы отправили на email</div>
+				<div class="form" id="form-confirmation-code">
+					<form action="#" method="post">
+						<!-- ДЕМО КОД 0000 -->
+						<div class="code-holder">
+							<input type="number" name="digit1" value="" min="0" max="9" maxlength="1" autocomplete="off">
+							<input type="number" name="digit2" value="" min="0" max="9" maxlength="1" autocomplete="off">
+							<input type="number" name="digit3" value="" min="0" max="9" maxlength="1" autocomplete="off">
+							<input type="number" name="digit4" value="" min="0" max="9" maxlength="1" autocomplete="off">
+						</div>
+						<!-- ДЕМО ОШИБКИ
+						<div class="message error">Код введен неверно</div>
+						-->
+						<a href="#" class="repeat">Отправить код еще раз</a>
+					</form>
+				</div>
+				<div class="note">Если вы не получили код, проверьте папку спам</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-wrapper" id="modal-registration">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-close" title="Закрыть"></div>
+
+				<div class="h1">Регистрация</div>
+				<div class="h2">Укажите ваши данные для регистрации</div>
+				<div class="form" id="form-forget">
+					<form action="#" method="post">
+						<div class="input">
+							<input type="email" name="email" placeholder="E-mail" maxlength="255">
+							<i>E-mail</i>
+						</div>
+						<div class="input">
+							<input type="text" name="name" placeholder="Имя" maxlength="255">
+							<i>Имя</i>
+						</div>
+						<div class="input input-password hidden">
+							<input type="password" name="password" placeholder="Новый пароль" maxlength="255">
+							<i>Новый пароль</i>
+							<span class="tool"></span>
+						</div>
+						<div class="input input-password hidden">
+							<input type="password" name="password2" placeholder="Повторите новый пароль" maxlength="255">
+							<i>Повторите новый пароль</i>
+							<span class="tool"></span>
+						</div>
+						<!-- ДЕМО ОШИБКИ
+						<div class="message error">Пароли не совпадают</div>
+						-->
+						<button class="btn" disabled="disabled">Зарегистрироваться!</button>
+					</form>
+				</div>
+				<div class="conditions">Используя данный сайт Вы принимаете <a href="#" target="_blank">Условия использования</a> и <a href="#" target="_blank">Политику конфиденциальности</a></div>
+				<div class="continue"><a href="#" class="js-cancel">Продолжить без авторизации</a></div>
+			</div>
+		</div>
+	</div>
+
+    <script type="text/javascript" src="assets/js/scripts.js?v1"></script>
+    <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
+	<script>
+		$(document).ready(function() {
+			// DEMO GOOGLE MAPS
+			var demolatlng = new google.maps.LatLng("55.77186", "37.59343799999999");
+			var demolatlng2 = new google.maps.LatLng("55.77186", "37.592");
+			var demolatlng3 = new google.maps.LatLng("55.77086", "37.590");
+
+			var demoOptions = {
+				zoom: 17,
+				center: demolatlng,
+				navigationControlOptions: {
+					style: google.maps.NavigationControlStyle.SMALL
+				},
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+
+			var map = new google.maps.Map(document.getElementById('map'), demoOptions);
+			map.scrollwheel = true;
+			map.setOptions({ mapTypeControl: true});
+
+			// масштабирование иконок
+			var sizes = {
+				'promo': {w: 90, h: 89},
+				'icon': {w: 96, h: 113},
+				'font': 27
+			}
+			if ($(window).width() > 1000) {
+				var coef = $(window).width() / 1440;
+			} else if($(window).width() > 540) {
+				var coef = $(window).width() / 1000;
+			} else {
+				var coef = $(window).width() / 540;
+			}
+			var scaledSizes = {
+				'promo': {w: sizes.promo.w * coef, h: sizes.promo.h * coef},
+				'icon': {w: sizes.icon.w * coef, h: sizes.icon.h * coef},
+				'font': sizes.font * coef	
+			}
+
+			var demoLocations = [
+				{
+					title: 'Получите подарок',
+					position: demolatlng,
+					label: '',
+					icon: {
+						url: 'assets/images/present.png',
+						scaledSize: new google.maps.Size(scaledSizes.promo.w, scaledSizes.promo.h)
+					}
+
+				},
+				{
+					title: 'Отдам баскетбольный мяч',
+					position: demolatlng2,
+					label: '',
+					icon: {
+						url: 'assets/images/placeholder_item1.png',
+						scaledSize: new google.maps.Size(scaledSizes.icon.w, scaledSizes.icon.h)
+					}
+				},
+				{
+					title: '2 предмета',
+					position: demolatlng3,
+					label: {
+						text: '2',
+					    color: '#ffffff',
+					    fontSize: scaledSizes.font + 'px',
+					    fontWeight: '500',
+					    className: 'map-placeholder'
+					},
+					icon: {
+						url: 'assets/images/placeholder_item_bg.png',
+						scaledSize: new google.maps.Size(scaledSizes.icon.w, scaledSizes.icon.h)
+					},
+					info: new google.maps.InfoWindow({
+					    content: '<div class="map-placeholder-info"><a href="item.html"><img src="assets/images/_item1.jpg" alt="#"/></a><a href="item.html"><img src="assets/images/_item2.jpg" alt="#"/></a></div>',
+					})
+				}					
+			];
+			demoLocations.forEach(function(element) {
+				var marker = new google.maps.Marker({
+					position: element.position,
+					map: map,
+					title: element.title,
+					label: element.label,
+					icon: element.icon
+				});
+
+				if (typeof(element.info) != 'undefined') {
+					marker.addListener('click', function () {
+						element.info.open({
+					    	anchor: marker,
+					    	map: map,
+					    	shouldFocus: false
+					    });
+					});
+				}
+			});
+		});
+	</script>
+</body>
+</html>
