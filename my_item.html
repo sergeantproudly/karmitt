@@ -101,7 +101,7 @@
 						</div>
 
 						<div class="btn-line">
-							<button class="btn remove">Снять с публикации</button>
+							<button class="btn remove js-modal-link" data-target="#modal-remove-item">Снять с публикации</button>
 							<button class="btn">Редактировать</button>
 						</div>
 					</div>
@@ -125,7 +125,7 @@
 				<a href="/" id="logo-footer"><img src="/assets/images/logo.svg" alt="Karmitt - Отдай даром" title="Karmitt - Отдай даром"></a>
 
 				<div id="copyright">&copy; 2021 Karmitt</div>
-				<div id="mn-conditions"><a href="#">Условия использования</a><a href="#">Партнерам</a></div>
+				<div id="mn-conditions"><a href="#">Условия использования</a><a href="become_partner.html">Партнерам</a></div>
 
 				<div id="social-media">Мы в соц.сетях
 					<ul>
@@ -368,6 +368,20 @@
 					</form>
 				</div>
 				<div class="note">Если вы не получили код, проверьте папку спам</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-wrapper" id="modal-remove-item">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-close" title="Закрыть"></div>
+				<div class="h2">Вы уверены, что хотите снять предмет с публикации? </div>
+
+				<div class="btn-line">
+					<button class="btn cancel js-cancel">Не снимать</button>
+					<button class="btn">Снять</button>
+				</div>
 			</div>
 		</div>
 	</div>
