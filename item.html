@@ -421,9 +421,9 @@
 			if ($(window).width() > 1000) {
 				var coef = $(window).width() / 1440;
 			} else if($(window).width() > 540) {
-				var coef = $(window).width() / 1000;
+				var coef = $(window).width() / 768;
 			} else {
-				var coef = $(window).width() / 540;
+				var coef = $(window).width() / 320;
 			}
 			var scaledSizes = {
 				'icon': {w: sizes.icon.w * coef, h: sizes.icon.h * coef}

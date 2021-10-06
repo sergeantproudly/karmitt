@@ -458,101 +458,198 @@
     <script type="text/javascript" src="assets/js/scripts.js?v1"></script>
     <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
 	<script>
-		$(document).ready(function() {
+		document.addEventListener('DOMContentLoaded', function() {
+			function customMarker(latlng, map, args) {
+				this.latlng = latlng;
+				this.args = args;
+				this.setMap(map);
+			}
+
+			customMarker.prototype = new google.maps.OverlayView();
+
+			customMarker.prototype.draw = function() {
+				var self = this,
+					div = this.div;
+
+				if (!div) {
+					if (typeof(self.args.link) !== 'undefined') {
+						div = this.div = document.createElement('a');
+						div.href = self.args.link;
+					} else {
+						div = this.div = document.createElement('div');
+					}
+
+					if (typeof(self.args.class_name) !== 'undefined') {
+						div.className = self.args.class_name;
+					}					
+					if (typeof(self.args.id) !== 'undefined') {
+						div.id = self.args.id;
+					}
+					if (typeof(self.args.title) !== 'undefined') {
+						div.title = self.args.title;
+					}
+					if (typeof(self.args.html) !== 'undefined') {
+						div.innerHTML = self.args.html;
+					}
+					if (typeof(self.args.info_html) !== 'undefined') {
+						div.innerHTML += '<div class="info c' + self.args.info_count + '" data-pos="0" data-total="' + self.args.info_count + '">' + self.args.info_html + (self.args.info_count > 3 ? '<button class="btn-prev" disabled="disabled">Назад</button><button class="btn-next">Вперед</button>' : '') + '</div>';
+						div.classList.add('has-info');
+						div.addEventListener('click', function(e) {
+							e.preventDefault();
+
+							if (e.target.closest('.info') == null) {
+								if (!this.classList.contains('act')) {
+									this.querySelector('.info').style.display = 'block';
+									this.classList.add('act');
+								} else {
+									this.querySelector('.info').style.display = 'none';
+									this.classList.remove('act');
+								}
+							}
+						});
+
+						if (self.args.info_count > 3) {
+							if ($(window).width() > 1000) {
+								var coef = $(window).width() / 1440;
+							} else if($(window).width() > 540) {
+								var coef = $(window).width() / 768;
+							} else {
+								var coef = $(window).width() / 320;
+							}
+							var delta = 76 * coef;
+							div.querySelector('.info-list').scrollLeft = 0;
+
+							div.querySelector('.btn-prev').addEventListener('click', function(e) {
+								e.stopPropagation();
+								var info = this.parentNode;
+								var list = info.querySelector('.info-list');
+								var btn_prev = this;
+								var btn_next = info.querySelector('.btn-next');
+								var pos = info.getAttribute('data-pos');
+								var total = info.getAttribute('data-total');
+
+								if (pos > 0) {
+									pos--;
+									list.scroll({
+								        left: pos * delta,
+								        top: 0,
+								        behavior: 'smooth'
+								    })
+								    info.setAttribute('data-pos', pos);
+
+								    btn_next.disabled = false;
+								    if (pos <= 0) btn_prev.disabled = true;
+								}
+							});
+							div.querySelector('.btn-next').addEventListener('click', function(e) {
+								e.stopPropagation();
+								var info = this.parentNode;
+								var list = info.querySelector('.info-list');
+								var btn_prev = info.querySelector('.btn-prev');
+								var btn_next = this;
+								var pos = info.getAttribute('data-pos');
+								var total = info.getAttribute('data-total');
+
+								if (pos - 0 + 3 < total) {
+									pos++;
+									list.scroll({
+								        left: pos * delta,
+								        top: 0,
+								        behavior: 'smooth'
+								    })
+								    info.setAttribute('data-pos', pos);
+
+								    btn_prev.disabled = false;
+								    if (pos - 0 + 3 >= total) btn_next.disabled = true;
+								}
+							});
+						}
+					}
+					
+					google.maps.event.addDomListener(div, 'click', function (event) {
+						google.maps.event.trigger(self, 'click');
+					});
+
+					var panes = self.getPanes();
+					panes.overlayImage.appendChild(div);
+				}
+
+				var point = self.getProjection().fromLatLngToDivPixel(self.latlng);
+
+				if (point) {
+					div.style.left = point.x + 'px';
+					div.style.top = point.y + 'px';
+				}
+			};
+
 			// DEMO GOOGLE MAPS
 			var demolatlng = new google.maps.LatLng("55.77186", "37.59343799999999");
 			var demolatlng2 = new google.maps.LatLng("55.77186", "37.592");
 			var demolatlng3 = new google.maps.LatLng("55.77086", "37.590");
+			var demolatlng4 = new google.maps.LatLng("55.77086", "37.596");
+			var demolatlng5 = new google.maps.LatLng("55.77286", "37.599");
 
 			var demoOptions = {
-				zoom: 17,
-				center: demolatlng,
+				zoom: 16,
+				center: demolatlng5,
 				navigationControlOptions: {
 					style: google.maps.NavigationControlStyle.SMALL
 				},
-				mapTypeId: google.maps.MapTypeId.ROADMAP
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				disableDefaultUI: true,
+				zoomControl: true
 			};
 
 			var map = new google.maps.Map(document.getElementById('map'), demoOptions);
 			map.scrollwheel = true;
 			map.setOptions({ mapTypeControl: true});
 
-			// масштабирование иконок
-			var sizes = {
-				'promo': {w: 90, h: 89},
-				'icon': {w: 96, h: 113},
-				'font': 27
-			}
-			if ($(window).width() > 1000) {
-				var coef = $(window).width() / 1440;
-			} else if($(window).width() > 540) {
-				var coef = $(window).width() / 1000;
-			} else {
-				var coef = $(window).width() / 540;
-			}
-			var scaledSizes = {
-				'promo': {w: sizes.promo.w * coef, h: sizes.promo.h * coef},
-				'icon': {w: sizes.icon.w * coef, h: sizes.icon.h * coef},
-				'font': sizes.font * coef	
-			}
-
 			var demoLocations = [
 				{
+					latlng: demolatlng,
+					class_name: 'map-present',
 					title: 'Получите подарок',
-					position: demolatlng,
-					label: '',
-					icon: {
-						url: 'assets/images/present.png',
-						scaledSize: new google.maps.Size(scaledSizes.promo.w, scaledSizes.promo.h)
-					}
-
+					link: 'donate.html'
 				},
-				{
+				{					
+					latlng: demolatlng2,
+					class_name: 'map-marker-image',
 					title: 'Отдам баскетбольный мяч',
-					position: demolatlng2,
-					label: '',
-					icon: {
-						url: 'assets/images/placeholder_item_bg.png',
-						scaledSize: new google.maps.Size(scaledSizes.icon.w, scaledSizes.icon.h)
-					}
+					html: '<img src="assets/images/_item3_map.jpg" alt="Отдам баскетбольный мяч"/>',
+					link: 'item.html'
 				},
-				{
+				{					
+					latlng: demolatlng3,
+					class_name: 'map-marker',
 					title: '2 предмета',
-					position: demolatlng3,
-					label: {
-						text: '2',
-					    color: '#ffffff',
-					    fontSize: scaledSizes.font + 'px',
-					    fontWeight: '500',
-					    className: 'map-placeholder'
-					},
-					icon: {
-						url: 'assets/images/placeholder_item_bg.png',
-						scaledSize: new google.maps.Size(scaledSizes.icon.w, scaledSizes.icon.h)
-					},
-					info: new google.maps.InfoWindow({
-					    content: '<div class="map-placeholder-info"><a href="item.html"><img src="assets/images/_item1.jpg" alt="#"/></a><a href="item.html"><img src="assets/images/_item2.jpg" alt="#"/></a></div>',
-					})
-				}					
+					html: '<div class="num">2</div>'
+				},
+				{					
+					latlng: demolatlng4,
+					class_name: 'map-marker',
+					title: '2 предмета',
+					html: '<div class="dotts"></div>',
+					info_count: 2,
+					info_html: '<ul class="info-list"><li><a href="item.html"><img src="assets/images/_item1.jpg" alt="#"/></a></li><li><a href="item.html"><img src="assets/images/_item2.jpg" alt="#"/></a></li></ul>'
+				},
+				{					
+					latlng: demolatlng5,
+					class_name: 'map-marker',
+					title: '5 предметов',
+					html: '<div class="dotts"></div>',
+					info_count: 5,
+					info_html: '<ul class="info-list"><li><a href="item.html"><img src="assets/images/_item1.jpg" alt="#"/></a></li><li><a href="item.html"><img src="assets/images/_item2.jpg" alt="#"/></a></li><li><a href="item.html"><img src="assets/images/_item3.jpg" alt="#"/></a></li><li><a href="item.html"><img src="assets/images/_item4.jpg" alt="#"/></a></li><li><a href="item.html"><img src="assets/images/_item5.jpg" alt="#"/></a></li></ul>'
+				}	
 			];
 			demoLocations.forEach(function(element) {
-				var marker = new google.maps.Marker({
-					position: element.position,
-					map: map,
+				var marker = new customMarker(element.latlng, map, {
+					class_name: element.class_name,
 					title: element.title,
-					label: element.label,
-					icon: element.icon
+					link: element.link,
+					html: element.html,
+					info_count: element.info_count,
+					info_html: element.info_html
 				});
-
-				if (typeof(element.info) != 'undefined') {
-					marker.addListener('click', function () {
-						element.info.open({
-					    	anchor: marker,
-					    	map: map,
-					    	shouldFocus: false
-					    });
-					});
-				}
 			});
 		});
 	</script>
