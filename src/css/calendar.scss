@@ -1,0 +1,194 @@
+.calendar {
+    position: relative;
+    width: vw(281);
+    height: vw(290);
+    overflow: hidden;
+    @include fs(12);
+
+    @media (max-width: $adaptive-width-tablet) {
+        width: vwt(281);
+        height: vwt(290);
+    }
+
+    @media (max-width: $adaptive-width-mobile) {
+        width: vwm(281);
+        height: vwm(290);
+    }
+
+    .month {
+        position: relative;
+
+        .heading {
+            @include fs(22);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        button {
+            font-size: 0;
+            position: absolute;
+            top: 0;
+            padding: vw(5) vw(11);
+            width: vw(9);
+            height: vw(15);
+            background-repeat: no-repeat;
+            background-size: vw(9) vw(15);
+            background-color: transparent;
+            background-position: vw(11) vw(5);
+            cursor: pointer;
+            border: 0;
+            @include sizing(c);
+
+            @media (max-width: $adaptive-width-tablet) {
+                padding: vwt(5) vwt(11);
+                width: vwt(9);
+                height: vwt(15);
+                background-size: vwt(9) vwt(15);
+                background-position: vwt(11) vwt(5);
+            }
+
+            @media (max-width: $adaptive-width-mobile) {
+                padding: vwm(5) vwm(11);
+                width: vwm(9);
+                height: vwm(15);
+                background-size: vwm(9) vwm(15);
+                background-position: vwm(11) vwm(5);
+            }
+
+            &:hover { cursor: pointer; }
+            &:focus { outline: none; }
+
+            &.btn-prev {
+                right: vw(23);
+                background-image: url('../images/arr_prev_cal.svg');
+
+                @media (max-width: $adaptive-width-tablet) {
+                    right: vwt(23);
+                }
+
+                @media (max-width: $adaptive-width-mobile) {
+                    right: vwm(23);
+                }
+            }
+
+            &.btn-next {
+                right: 0;
+                background-image: url('../images/arr_next_cal.svg');
+            }
+        }
+    }
+
+    table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: vw(280);
+        background-color: $color-white;
+        transform: translateX(0);
+        transition: all 0.3s ease;
+        position: absolute;
+        top: vw(36);
+        left: 0;
+
+        @media (max-width: $adaptive-width-tablet) {
+            width: vwt(280);
+            top: vwt(36);
+        }
+
+        @media (max-width: $adaptive-width-mobile) {
+            width: vwm(280);
+            top: vwm(36);
+        }
+
+        &.active {
+            transform: translateX(1px);      
+        }
+
+        &.inactive {
+            transition: all 0.3s 0.01s ease;
+        }
+
+        &.to-left {
+            transform: translateX(vw(-279));
+
+            @media (max-width: $adaptive-width-tablet) {
+                transform: translateX(vwt(-279));
+            }
+
+            @media (max-width: $adaptive-width-mobile) {
+                transform: translateX(vwm(-279));
+            }
+        }
+
+        &.to-right {
+            transform: translateX(vw(280));
+
+            @media (max-width: $adaptive-width-tablet) {
+                transform: translateX(vwt(280));
+            }
+
+            @media (max-width: $adaptive-width-mobile) {
+                transform: translateX(vwm(280));
+            }
+        }
+
+        td, th {
+            text-align: center;
+            background-color: $color-white;
+        }
+        th {
+            border: 0;
+            background-color: transparent;
+            color: $color-text;
+            font-weight: 400;
+            padding: vw(10);
+            @include fs(12);
+
+            @media (max-width: $adaptive-width-tablet) {
+                padding: vwt(10);
+            }
+
+            @media (max-width: $adaptive-width-mobile) {
+                padding: vwm(10);
+            }
+        }
+        td {
+            padding: 0;
+            border: 1px solid $color-gray1;
+        }
+        td > span {
+            color: $color-text;
+            padding: vw(10);
+            display: block;
+            cursor: pointer;
+
+            @media (max-width: $adaptive-width-tablet) {
+                padding: vwt(10);
+            }
+
+            @media (max-width: $adaptive-width-mobile) {
+                padding: vwm(10);
+            }
+
+            &:hover {
+                background-color: $color-gray1;
+            }
+        }
+        td.curr > span {
+            font-weight: 500;
+        }
+        td.selected > span {
+            font-weight: 500;
+            background-color: $color-green;
+            color: $color-white;
+        }
+        td.inact > span {
+            cursor: default;
+            color: $color-gray2;
+            background-color: $color-lgray;
+
+            &:hover {
+                background-color: $color-lgray;
+            }
+        }
+    }
+}
