@@ -151,7 +151,7 @@ function initElements(element) {
 			if (!$(e.target).closest('#chat-mn').length) {
 				$('#chat-fadeout').stop().fadeOut(450);
 				$('#chat-mn').stop().fadeOut(300);
-				$('#attachments-mn').stop().fadeOut(300);
+				if (__isMobile) $('#attachments-mn').stop().fadeOut(300);
 			}
 		}
 		if ($('.select.opened').length) {
