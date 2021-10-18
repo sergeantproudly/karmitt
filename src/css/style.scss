@@ -2610,8 +2610,19 @@ footer {
 
 			li,
 			.li {
+				display: block;
+
 				img {
 					width: 100%;
+					@include radius(vw(16));
+					
+					@media (max-width: $adaptive-width-tablet) {
+						@include radius(vwt(16));				
+					}
+
+					@media (max-width: $adaptive-width-mobile) {
+						@include radius(vwm(16));					
+					}
 				}
 			}
 		}

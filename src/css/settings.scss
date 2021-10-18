@@ -480,6 +480,7 @@ a.dotted{
 		width: 45%;
 		height: 100%;
 		background: linear-gradient(90deg, rgba(255, 255, 255, 0.0001) 0%, #FFFFFF 100%);
+		pointer-events: none;
 	}
 
 	&.scrolled-full {
