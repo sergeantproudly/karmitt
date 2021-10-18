@@ -192,6 +192,7 @@
 
 			$('#profile-sidebar').removeClass('hidden');
 			$('#modal-fadeout').stop().fadeIn(300);
+			$('html').addClass('html-modal');
 		});
 		$('#profile-sidebar').show()
 			.find('.close').click(function(e) {
@@ -200,6 +201,7 @@
 
 			$('#profile-sidebar').addClass('hidden');
 			$('#modal-fadeout').stop().fadeOut(300);
+			$('html').removeClass('html-modal');
 		});
 		$('#profile-sidebar [data-toggle]').click(function(e) {
 			e.preventDefault();

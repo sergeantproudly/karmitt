@@ -2615,7 +2615,7 @@ footer {
 				img {
 					width: 100%;
 					@include radius(vw(16));
-					
+
 					@media (max-width: $adaptive-width-tablet) {
 						@include radius(vwt(16));				
 					}
@@ -5947,6 +5947,7 @@ footer {
 				height: 100%;
 				width: vw(50);
 				cursor: pointer;
+				@extend %highlight-cancel;
 
 				@media (max-width: $adaptive-width-tablet) {
 					width: vwt(50);
@@ -6178,6 +6179,7 @@ footer {
 		width: vw(56);
 		height: vw(56);
 		cursor: pointer;
+		@extend %highlight-cancel;
 
 		@media (max-width: $adaptive-width-tablet) {
 			width: vwt(56);

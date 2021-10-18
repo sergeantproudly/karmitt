@@ -526,6 +526,7 @@ td{
 			height: vw(36);
 			width: vw(36);
 			cursor: pointer;
+			@extend %highlight-cancel;
 
 			@media (max-width: $adaptive-width-tablet) {
 				top: vwt(7);
@@ -592,6 +593,7 @@ td{
 			height: vw(36);
 			width: vw(36);
 			cursor: pointer;
+			@extend %highlight-cancel;
 
 			@media (max-width: $adaptive-width-tablet) {
 				top: vwt(7);
@@ -624,6 +626,7 @@ td{
 					width: vw(24);
 					height: vw(21);
 					background: url('../images/ico_input_hidden.svg') no-repeat;
+					background-size: contain;
 
 					@media (max-width: $adaptive-width-tablet) {
 						top: vwt(10);
@@ -652,6 +655,7 @@ td{
 					width: vw(24);
 					height: vw(24);
 					background: url('../images/ico_input_shown.svg') no-repeat;
+					background-size: contain;
 
 					@media (max-width: $adaptive-width-tablet) {
 						top: vwt(10);
