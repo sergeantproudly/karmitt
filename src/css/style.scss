@@ -5978,6 +5978,7 @@ footer {
 					width: vw(18);
 					height: vw(18);
 					background: url('../images/ico_pencil.svg') no-repeat;
+					background-size: contain;
 					margin: vw(-9) vw(-15) 0 0;
 
 					@media (max-width: $adaptive-width-tablet) {
