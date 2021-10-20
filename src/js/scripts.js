@@ -372,18 +372,25 @@
 				.then(function() {
 					// DEMO
 					$(files).each(function(i, file) {
-						$('#upload-files-field ul>li:eq(' + i + ')').html('<img src="/assets/images/_item_full.jpg" alt=""><span class="close"></span>');
+						$('#upload-files-field ul>li:eq(' + i + ')').html('').addClass('loading');
 					});
-					$('#upload-files-field ul>li>.close').click(function(e) {
-						e.preventDefault();
-						e.stopPropagation();
+					
+					setTimeout(function() {
+						$(files).each(function(i, file) {
+							$('#upload-files-field ul>li:eq(' + i + ')').html('<img src="/assets/images/_item_full.jpg" alt=""><span class="close"></span>').removeClass('loading');
+						});
 
-						$(this).closest('li').html('<a href="#" class="js-upload-file"><span>Добавить</span></a>')
-							.find('.js-upload-file').click(function(e) {
-								e.preventDefault();
-								$('#upload-files-input').click();
-							});
-					});
+						$('#upload-files-field ul>li>.close').click(function(e) {
+							e.preventDefault();
+							e.stopPropagation();
+
+							$(this).closest('li').html('<a href="#" class="js-upload-file"><span>Добавить</span></a>')
+								.find('.js-upload-file').click(function(e) {
+									e.preventDefault();
+									$('#upload-files-input').click();
+								});
+						});
+					}, 3000);
 					$('#upload-files-field ul').append('<li><a href="#" class="js-upload-file"><span>Добавить</span></a></li>');
 					$('#upload-files ul>li:last .js-upload-file').click(function(e) {
 						e.preventDefault();
@@ -675,7 +682,11 @@
 						color = '#333333';
 						$('#upload-logo-color').val(color);
 					}
-					$('#upload-file-field').html('<img src="assets/images/_partner7.svg" alt=""/><span class="edit js-upload-file">ИЗМЕНИТЬ</span>').addClass('uploaded').css('background-color', color);
+					$('#upload-file-field').html('').addClass('loading');
+					setTimeout(function() {
+						$('#upload-file-field').html('<img src="assets/images/_partner7.svg" alt=""/><span class="edit js-upload-file">ИЗМЕНИТЬ</span>').removeClass('loading').addClass('uploaded').css('background-color', color);						
+					}, 3000);
+					
 					
 				})
 				.catch(function() {
@@ -823,6 +834,62 @@
 			}
 			resizeCallbacks.push(userListPos);
 			userListPos();
+		}
+
+		// UPLOAD PHOTO IN PROFILE
+		if ($('#form-profile-edit .upload-photo').length) {
+			function handleUploadedFiles(files) {
+				// DEMO HANDLE HERE
+				var url = '#';
+				var formData = new FormData();
+			  	formData.append('files', files);
+			  	fetch(url, {
+					method: 'POST',
+				    body: formData
+				})
+				.then(function() {
+					// DEMO
+					$('#form-profile-edit .upload-file-field').html('').addClass('loading');
+					setTimeout(function() {
+						$('#form-profile-edit .upload-file-field').html('<img src="assets/images/_account.jpg" alt=""/><span class="edit js-upload-file">ИЗМЕНИТЬ</span>').removeClass('loading').addClass('uploaded');
+					}, 3000);
+					
+				})
+				.catch(function() {
+				});
+			}
+
+			$('#form-profile-edit .upload-file-field').on('dragenter dragover dragleave', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+			});
+
+			$('#form-profile-edit .upload-file-field').on('dragenter dragover', function() {
+				$(this).addClass('dragover');
+			});
+
+			$('#form-profile-edit .upload-file-field').on('dragleave drop', function() {
+				$(this).removeClass('dragover');
+			});
+
+			$('#form-profile-edit .upload-file-field').get(0).addEventListener('drop', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+
+				e = e || window.event;
+				var files = e.dataTransfer.files;
+				handleUploadedFiles(files);
+			});
+
+			$('#form-profile-edit .upload-file-input').on('change', function() {
+				handleUploadedFiles(this.file);
+			});
+
+			$('#form-profile-edit .upload-photo .js-upload-file').click(function(e) {
+				e.preventDefault();
+
+				$('.upload-file-input').click();
+			});
 		}
 
 		// ITEMS LIST DEMO

@@ -3173,6 +3173,35 @@ footer {
 								height: vwm(16);
 							}
 						}
+
+						&.loading {
+							background-color: $color-lgray;
+							
+							&:after {
+								content: '';
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								width: vw(30);
+								height: vw(30);
+								margin: vw(-15) 0 0 vw(-15);
+								background: url('../images/ico_loading2.svg') no-repeat;
+								background-size: contain;
+								@include infinite-rotation();
+
+								@media (max-width: $adaptive-width-tablet) {
+									width: vwt(30);
+									height: vwt(30);
+									margin: vwt(-15) 0 0 vwt(-15);
+								}
+
+								@media (max-width: $adaptive-width-mobile) {
+									width: vwm(30);
+									height: vwm(30);
+									margin: vwm(-15) 0 0 vwm(-15);
+								}
+							}
+						}
 					}
 				}
 			}
@@ -3558,6 +3587,33 @@ footer {
 					background-color: darken($color-lgray, 2%);
 					@include transition(background-color);
 				}	
+
+				&.loading {
+					&:after {
+						content: '';
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						width: vw(30);
+						height: vw(30);
+						margin: vw(-15) 0 0 vw(-15);
+						background: url('../images/ico_loading2.svg') no-repeat;
+						background-size: contain;
+						@include infinite-rotation();
+
+						@media (max-width: $adaptive-width-tablet) {
+							width: vwt(30);
+							height: vwt(30);
+							margin: vwt(-15) 0 0 vwt(-15);
+						}
+
+						@media (max-width: $adaptive-width-mobile) {
+							width: vwm(30);
+							height: vwm(30);
+							margin: vwm(-15) 0 0 vwm(-15);
+						}
+					}
+				}
 
 				&.uploaded {
 					background-color: #333;
@@ -6070,6 +6126,147 @@ footer {
 				padding: vwm(17) vwm(15);
 				width: 100%;
 			}
+		}
+	}
+
+	.upload-photo {
+		position: relative;
+		margin-bottom: vw(30);
+
+		@media (max-width: $adaptive-width-tablet) {
+			margin-bottom: vwt(30);
+		}
+
+		@media (max-width: $adaptive-width-mobile) {
+			margin-bottom: vwm(20);
+		}
+
+		.field {
+			position: relative;
+			width: vw(163);
+			height: vw(163);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			background-color: $color-lgray;
+			color: $color-gray3;
+			@include fs(12);
+			@include transition(background-color);
+			@include radius(vw(163));
+			overflow: hidden;
+			cursor: pointer;
+
+			@media (max-width: $adaptive-width-tablet) {
+				width: vwt(163);
+				height: vwt(163);
+				@include radius(vwt(163));
+			}
+
+			@media (max-width: $adaptive-width-mobile) {
+				width: vwm(139);
+				height: vwm(139);
+				@include radius(vwm(139));
+			}
+
+			& > span {
+				&:before {
+					content: '';
+					display: block;
+					width: vw(34);
+					height: vw(34);
+					background: url('../images/ico_add_file.svg') no-repeat;
+					background-size: contain;
+					margin: 0 auto vw(8);
+
+					@media (max-width: $adaptive-width-tablet) {
+						width: vwt(18);
+						height: vwt(18);
+						margin-bottom: vwt(8);
+					}
+
+					@media (max-width: $adaptive-width-mobile) {
+						width: vwm(18);
+						height: vwm(18);
+						margin-bottom: vwm(8);
+					}
+				}
+			}
+
+			&:hover {
+				background-color: darken($color-lgray, 2%);
+				@include transition(background-color);
+			}
+
+			&.loading {
+				&:after {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: vw(30);
+					height: vw(30);
+					margin: vw(-15) 0 0 vw(-15);
+					background: url('../images/ico_loading2.svg') no-repeat;
+					background-size: contain;
+					@include infinite-rotation();
+
+					@media (max-width: $adaptive-width-tablet) {
+						width: vwt(30);
+						height: vwt(30);
+						margin: vwt(-15) 0 0 vwt(-15);
+					}
+
+					@media (max-width: $adaptive-width-mobile) {
+						width: vwm(30);
+						height: vwm(30);
+						margin: vwm(-15) 0 0 vwm(-15);
+					}
+				}
+			}
+
+			&.uploaded {
+				background-color: #333;
+
+				img {
+					width: 100%;
+				}
+
+				.edit {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: vw(56);
+					background-color: rgba(0, 0, 0, 0.4);
+					color: #fff;
+					@include fs(12);
+					cursor: pointer;
+					text-align: center;
+
+					@media (max-width: $adaptive-width-tablet) {
+						height: vwt(56);
+					}
+
+					@media (max-width: $adaptive-width-mobile) {
+						height: vwm(48);
+					}
+
+					&:before {
+						display: none;
+					}
+				}
+			}			
+		}
+
+		input[type="file"] {
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
 		}
 	}
 }
