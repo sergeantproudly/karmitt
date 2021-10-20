@@ -824,6 +824,17 @@
 			resizeCallbacks.push(userListPos);
 			userListPos();
 		}
+
+		// ITEMS LIST DEMO
+		if ($('.items').length) {
+			// DEMO
+			$('.items li .selected').click(function() {
+				if ($(this).hasClass('act')) $(this).removeClass('act').addClass('no-hover');
+				else $(this).addClass('act');
+			}).mouseleave(function() {
+				$(this).removeClass('no-hover');
+			});
+		}
     }
 
     initPage();

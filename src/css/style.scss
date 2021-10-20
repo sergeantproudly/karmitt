@@ -1365,6 +1365,7 @@ footer {
 				top: vw(8);
 				right: vw(6);
 				font-size: 0;
+				cursor: pointer;
 
 				@media (max-width: $adaptive-width-tablet) {
 					top: vwt(8);
@@ -1433,6 +1434,18 @@ footer {
 
 					&:after {
 						opacity: 1;
+						@include transition(opacity);
+					}
+				}
+
+				&.no-hover:hover {
+					&:before {
+						opacity: 1;
+						@include transition(opacity);
+					}
+
+					&:after {
+						opacity: 0;
 						@include transition(opacity);
 					}
 				}
