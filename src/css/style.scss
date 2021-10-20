@@ -8124,3 +8124,49 @@ body.page500 {
 		}
 	}
 }
+.btn {
+	&.loading {
+		background-color: $color-button-active;
+		color: $color-button-active;
+		position: relative;
+		@include transition-duration(0.01s);
+
+		&:hover {
+			background-color: $color-button-active;
+			color: $color-button-active;
+			@include transition-duration(0.01s);
+		}
+
+		&:active {
+			background-color: $color-button-active;
+			color: $color-button-active;
+			@include transition-duration(0.01s);
+		}
+
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: vw(19);
+			height: vw(19);
+			margin: vw(-9.5) 0 0 vw(-9.5);
+			background: url('../images/ico_loading.svg') no-repeat;
+			background-size: contain;
+			@include infinite-rotation();
+
+			@media (max-width: $adaptive-width-tablet) {
+				width: vwt(19);
+				height: vwt(19);
+				margin: vwt(-9.5) 0 0 vwt(-9.5);
+			}
+
+			@media (max-width: $adaptive-width-mobile) {
+				width: vwm(19);
+				height: vwm(19);
+				margin: vwm(-9.5) 0 0 vwm(-9.5);
+			}
+		}
+	}
+}

@@ -512,7 +512,7 @@ a.dotted{
     transform: rotate($degrees);
 }
 
-@mixin infinite-rotation($speed: $animation-speed) {
+@mixin infinite-rotation($speed: $animation-speed * 2) {
 	-webkit-animation-name: rotation360;
     -webkit-animation-duration: $speed;
     -webkit-animation-iteration-count: infinite;
