@@ -299,6 +299,7 @@ header {
 		top: vw(20);
 		right: $padding-edges;
 		overflow: hidden;
+		display: block;
 		@include radius(vw(100));
 
 		@media (max-width: $adaptive-width-tablet) {
@@ -317,6 +318,7 @@ header {
 		img {
 			width: vw(55);
 			height: vw(55);
+			display: block;
 
 			@media (max-width: $adaptive-width-tablet) {
 				width: vwt(55);
