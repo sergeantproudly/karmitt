@@ -902,6 +902,16 @@
 				$(this).removeClass('no-hover');
 			});
 		}
+
+		if ($('#item #photos').length) {
+			// DEMO
+			$('#item #photos .selected').click(function() {
+				if ($(this).hasClass('act')) $(this).removeClass('act').addClass('no-hover');
+				else $(this).addClass('act');
+			}).mouseleave(function() {
+				$(this).removeClass('no-hover');
+			});
+		}
     }
 
     initPage();

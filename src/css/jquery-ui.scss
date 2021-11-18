@@ -374,19 +374,29 @@ button.ui-button::-moz-focus-inner {
 }
 										
 .ui-checkboxradio-label .ui-icon-background {
-	width: 24px;
-	height: 24px;
-	margin: -2px 13px 0 0;
+	width: vw(20);
+	height: vw(20);
+	margin: vw(-2) vw(13) 0 0;
 	vertical-align: middle;
 	position: relative;
 	top: 0;
 	left: 0;
 	background-color: #fff;
-	background: rgba(255, 255, 255, 0.04);
-	border: 1px solid #fff;
-	border-color: rgba(255, 255, 255, 0.42);
-	@include radius(2px);
+	border: 1px solid #BEBAB5;
+	@include radius(vw(3));
 	@include transition(all, 150ms);
+
+	@media (max-width: $adaptive-width-tablet) {
+		width: vwt(20);
+		height: vwt(20);
+		margin: vwt(-2) vwt(13) 0 0;
+	}
+
+	@media (max-width: $adaptive-width-mobile) {
+		width: vwm(20);
+		height: vwm(20);
+		margin: vwm(-2) vwm(13) 0 0;
+	}
 }
 .ui-checkboxradio-icon-space {
 	display: none;
@@ -399,11 +409,23 @@ button.ui-button::-moz-focus-inner {
 .ui-checkboxradio-label .ui-icon-background.ui-state-checked::after{
 	content: '';
 	position: absolute;
-	top: 8px;
-	left: 6px;
-	background: url('../images/ico_v.svg');
-	width: 10px;
-	height: 7px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: url('../images/ico_v_bet.svg') no-repeat;
+	background-size: contain;
+	width: vw(12);
+	height: vw(9);
+
+	@media (max-width: $adaptive-width-tablet) {
+		width: vwt(12);
+		height: vwt(9);
+	}
+
+	@media (max-width: $adaptive-width-mobile) {
+		width: vwm(12);
+		height: vwm(9);	
+	}
 }
 .ui-button.ui-checkboxradio-radio-label.ui-checkboxradio-checked {
 	padding-left: 0;

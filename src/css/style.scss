@@ -1239,13 +1239,11 @@ footer {
 
 			& > a {
 				position: absolute;
+				z-index: 2;
 				display: block;
 				width: 100%;
 				height: 100%;
-				background-size: 100% 100%;
-				background-repeat: no-repeat;
 				text-decoration: none;
-				@include transitions(background-size, background-position);
 			}
 
 			.title {
@@ -1361,6 +1359,7 @@ footer {
 				position: absolute;
 				top: vw(8);
 				right: vw(6);
+				z-index: 3;
 				font-size: 0;
 				cursor: pointer;
 
@@ -1448,6 +1447,19 @@ footer {
 				}
 			}
 
+			.bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				@include transition(transform);
+			}
+
 			&:hover {
 				& > a {
 					background-size: 105% 105%;
@@ -1467,6 +1479,14 @@ footer {
 					background-color: rgba(0,0,0,0.6);
 					@include transition(background-color);
 				}
+
+				.bg {
+					-webkit-transform: scale(1.04);
+					-moz-transform: scale(1.04);
+					-o-transform: scale(1.04);
+					transform: scale(1.04);
+					@include transition(transform);
+				}
 			}
 
 			&.advertisement {
@@ -1474,6 +1494,9 @@ footer {
 					background-repeat: no-repeat;
 					padding: vw(26) vw(19);
 					color: $color-text;
+					background-size: cover;
+					background-position: center;
+					background-repeat: no-repeat;
 
 					@media (max-width: $adaptive-width-tablet) {
 						padding: vwt(26) vwt(19);
@@ -1585,6 +1608,7 @@ footer {
 					width: vw(96);
 					height: vw(96);
 					margin-left: vw(-48);
+					@include transition(transform);
 
 					@media (max-width: $adaptive-width-tablet) {
 						top: vwt(50);
@@ -1685,6 +1709,16 @@ footer {
 					& > strong {
 						display: flex;
 						align-items: center;
+					}
+				}
+
+				&:hover {
+					.logo-holder {
+						-webkit-transform: scale(1.04);
+						-moz-transform: scale(1.04);
+						-o-transform: scale(1.04);
+						transform: scale(1.04);
+						@include transition(transform);
 					}
 				}
 			}
@@ -1877,8 +1911,10 @@ footer {
 			margin: vwm(16) 0 0;
 		}
 
-		img {
+		.img-holder {
+			overflow: hidden;
 			height: vw(41);
+			min-width: vw(41);
 			margin-right: vw(12);
 			display: inline-block;
 			vertical-align: middle;
@@ -1897,6 +1933,10 @@ footer {
 				height: vwm(41);
 				margin-right: vwm(12);
 				@include radius(vwm(8));
+			}
+
+			& > img {
+				@include fit();			
 			}
 		}
 	}
@@ -2877,6 +2917,98 @@ footer {
 					left: vwt(10);
 					width: vwt(22);
 					height: vwt(20);
+				}
+			}
+		}
+
+		.selected {
+			position: absolute;
+			top: vw(15);
+			right: vw(13);
+			z-index: 3;
+			font-size: 0;
+			cursor: pointer;
+
+			@media (max-width: $adaptive-width-tablet) {
+				top: vwt(15);
+				right: vwt(13);
+			}
+
+			@media (max-width: $adaptive-width-mobile) {
+				top: vwm(10);
+				right: vwm(9);
+			}
+				
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: vw(50);
+				height: vw(48);
+				background: url('../images/ico_star.png') no-repeat;
+				background-size: contain;
+				opacity: 1;
+				@include transition(opacity);
+
+				@media (max-width: $adaptive-width-tablet) {
+					width: vwt(50);
+					height: vwt(48);
+				}
+
+				@media (max-width: $adaptive-width-mobile) {
+					width: vwm(50);
+					height: vwm(48);
+				}
+			}
+
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: vw(50);
+				height: vw(48);
+				background: url('../images/ico_star_filled.png') no-repeat;
+				background-size: contain;	
+				opacity: 0;
+				@include transition(opacity);
+
+				@media (max-width: $adaptive-width-tablet) {
+					width: vwt(50);
+					height: vwt(48);
+				}
+
+				@media (max-width: $adaptive-width-mobile) {
+					width: vwm(50);
+					height: vwm(48);
+				}
+			}
+
+			&.act,
+			&:hover {
+				&:before {
+					opacity: 0;
+					@include transition(opacity);
+				}
+
+				&:after {
+					opacity: 1;
+					@include transition(opacity);
+				}
+			}
+
+			&.no-hover:hover {
+				&:before {
+					opacity: 1;
+					@include transition(opacity);
+				}
+
+				&:after {
+					opacity: 0;
+					@include transition(opacity);
 				}
 			}
 		}
@@ -5556,6 +5688,207 @@ footer {
 
 		.btn {
 			margin-top: 0;
+		}
+
+		ul {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: stretch;
+			justify-content: flex-start;
+			margin-bottom: vw(10);
+
+			& > li {
+				display: inline-block;
+				vertical-align: top;
+				flex-basis: 48%;
+				width: 48%;
+				background-color: $color-white;
+				box-shadow: 0px vw(14) vw(41) vw(-16) rgba(0, 0, 0, 0.2);
+				@include radius(vw(23));
+				margin: 0 0 vw(14) 4%;
+				@include transition(box-shadow);
+
+				@media (max-width: $adaptive-width-tablet) {
+					box-shadow: 0px vwt(14) vwt(41) vwt(-16) rgba(0, 0, 0, 0.2);
+					@include radius(vwt(23));
+					margin: 0 0 vwt(14) 2.28%;
+				}
+
+				@media (max-width: $adaptive-width-mobile) {
+					flex-basis: 47.91%;
+					width: 47.91%;
+					margin: 0 0 vwm(12) 4.16%;
+					box-shadow: 0px vwm(14) vwm(41) vwm(-16) rgba(0, 0, 0, 0.2);
+					@include radius(vwm(23));
+				}
+
+				&:nth-child(2n-1) {
+					margin-left: 0;
+
+					@media (max-width: $adaptive-width-mobile) {
+						margin-left: 4.16%;
+					}
+				}
+
+				&:nth-child(2n-1) {
+					@media (max-width: $adaptive-width-mobile) {
+						margin-left: 0;
+					}
+				}
+
+				&:hover {
+					box-shadow: 0px vw(7) vw(31) vw(-16) rgba(0, 0, 0, 0.2);
+					@include transition(box-shadow);
+
+					@media (max-width: $adaptive-width-tablet) {
+						box-shadow: 0px vwt(7) vwt(31) vwt(-16) rgba(0, 0, 0, 0.2);
+					}
+
+					@media (max-width: $adaptive-width-mobile) {
+						box-shadow: 0px vwm(7) vwm(31) vwm(-16) rgba(0, 0, 0, 0.2);
+					}
+				}
+
+				a {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					text-decoration: none;
+					color: $color-text;
+					height: 100%;
+					padding: vw(14);
+
+					@media (max-width: $adaptive-width-tablet) {
+						padding: vwt(14);
+					}
+
+					@media (max-width: $adaptive-width-mobile) {
+						padding: vwm(14);
+					}
+				}
+
+				.ico {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					position: relative;
+					background-color: $color-green;
+					@include radius(vw(12));
+					width: vw(40);
+					height: vw(40);
+					flex-shrink: 0;
+					@include fs(16);
+					font-weight: 500;
+					margin-bottom: vw(8);
+
+					@media (max-width: $adaptive-width-tablet) {
+						@include radius(vwt(12));
+						width: vwt(40);
+						height: vwt(40);
+						margin-bottom: vwt(8);
+					}
+
+					@media (max-width: $adaptive-width-mobile) {
+						@include radius(vwm(12));
+						width: vwm(40);
+						height: vwm(40);
+						margin-bottom: vwm(8);
+					}
+
+					&:after {
+						content: '';
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						width: vw(20);
+						height: vw(18);
+						margin: vw(-9) 0 0 vw(-10);
+						background: url('../images/ico_discount.svg') no-repeat;
+						background-size: contain;
+
+						@media (max-width: $adaptive-width-tablet) {
+							width: vwt(20);
+							height: vwt(18);
+							margin: vwt(-9) 0 0 vwt(-10);
+						}
+
+						@media (max-width: $adaptive-width-mobile) {
+							width: vwm(20);
+							height: vwm(18);
+							margin: vwm(-9) 0 0 vwm(-10);
+						}
+					}
+
+					&.discount {
+						background-color: $color-yellow;
+
+						&:after {
+							display: none;
+						}
+					}
+				}
+
+				h3,
+				.h3 {
+					flex-grow: 1;
+					cursor: pointer;
+					@include fs(16);
+					margin-bottom: vw(11);
+
+					@media (max-width: $adaptive-width-tablet) {
+						margin-bottom: vwt(11);
+					}
+
+					@media (max-width: $adaptive-width-mobile) {
+						margin-bottom: vwm(11);
+					}
+				}
+
+				.karmitts {
+					position: relative;
+					flex-shrink: 0;
+					padding: vw(3) vw(27) vw(3) vw(7);
+					@include fs(14);
+					border: 1px solid $color-gray1;
+					@include radius(vw(14));
+
+					@media (max-width: $adaptive-width-tablet) {
+						padding: vwt(3) vwt(27) vwt(3) vwt(7);
+						@include radius(vwt(14));
+					}
+
+					@media (max-width: $adaptive-width-mobile) {
+						padding: vwm(3) vwm(27) vwm(3) vwm(7);
+						@include radius(vwm(14));
+					}
+
+					&:after {
+						content: '';
+						display: block;
+						position: absolute;
+						top: vw(5);
+						right: vw(8);
+						width: vw(14);
+						height: vw(15);
+						background: url('../images/ico_karmitt2.svg') no-repeat;
+						background-size: contain;
+
+						@media (max-width: $adaptive-width-tablet) {
+							top: vwt(5);
+							right: vwt(8);
+							width: vwt(14);
+							height: vwt(15);
+						}
+
+						@media (max-width: $adaptive-width-mobile) {
+							top: vwm(5);
+							right: vwm(8);
+							width: vwm(14);
+							height: vwm(15);
+						}
+					}
+				}
+			}
 		}
 	}
 
