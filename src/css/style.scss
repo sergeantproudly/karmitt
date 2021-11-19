@@ -6828,9 +6828,9 @@ footer {
 	}
 }
 
-body.chat {
+main.chat {
 	@media (max-width: $adaptive-width-mobile) {
-		main {
+		& {
 			display: flex;
 
 			& > .holder {
@@ -8103,8 +8103,8 @@ body.chat {
 	}
 }
 
-body.page404 {
-	main {
+main.page404 {
+	& {
 		display: flex;
 
 		.holder {
@@ -8183,8 +8183,8 @@ body.page404 {
 	}
 }
 
-body.page500 {
-	main {
+main.page500 {
+	& {
 		display: flex;
 
 		.holder {
