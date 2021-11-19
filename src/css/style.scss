@@ -8370,6 +8370,44 @@ body.page500 {
 					width: vwm(56);
 					height: vwm(56);
 				}
+
+				&.inprogress {
+					background: none;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+
+					svg {
+						width: vw(42);
+						height: vw(42);
+
+						@media (max-width: $adaptive-width-tablet) {
+							width: vwt(42);
+							height: vwt(42);							
+						}
+
+						@media (max-width: $adaptive-width-tablet) {
+							width: vwm(42);
+							height: vwm(42);							
+						}
+					}
+
+					.donut-hole {
+						fill: transparent;
+					}
+
+					.donut-ring {
+						fill: transparent;
+						stroke: $color-lgray;
+						stroke-width: 4px;
+					}
+
+					.donut-segment {
+						fill: transparent;
+						stroke: $color-green;
+						stroke-width: 4px;
+					}
+				}
 			}
 		}
 
