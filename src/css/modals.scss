@@ -65,7 +65,8 @@
 			padding: vwm(55) vwm(16) vwm(46);
 		}
 
-		.modal-close {
+		.modal-close,
+		.modal-x {
 			position: absolute;
 			top: vw(24);
 			right: vw(24);
