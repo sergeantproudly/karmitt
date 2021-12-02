@@ -483,6 +483,186 @@
 		</div>
 	</div>
 
+	<!-- Примеры модалов с классами  -->
+	<div class="js-modal-link" data-target="#modal-test1" style="cursor: pointer;padding:20px;text-align:center">Вы действительно хотите подтвердить действие?</div>
+	<div class="modal-wrapper modal-confirm" id="modal-test1">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-close" title="Закрыть"></div>
+
+				<div class="h1">Вы действительно хотите подтвердить действие?</div>
+				
+				<div class="btn-line"><button class="btn cancel js-cancel">Отменить</button><button class="btn">Подтвердить</button></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="js-modal-link" data-target="#modal-test2" style="cursor: pointer;padding:20px;text-align:center">Код подтверждения</div>
+	<div class="modal-wrapper modal-code" id="modal-test2">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-close" title="Закрыть"></div>
+
+				<div class="h1">Подтверждение</div>
+				<div class="h2">Введите четырехзначный код, который мы отправили на email</div>
+				<div class="form" id="form-confirmation-code">
+					<form action="#" method="post">
+						<!-- ДЕМО КОД 0000 -->
+						<div class="code-holder">
+							<input type="number" name="digit1" value="" min="0" max="9" maxlength="1" autocomplete="off">
+							<input type="number" name="digit2" value="" min="0" max="9" maxlength="1" autocomplete="off">
+							<input type="number" name="digit3" value="" min="0" max="9" maxlength="1" autocomplete="off">
+							<input type="number" name="digit4" value="" min="0" max="9" maxlength="1" autocomplete="off">
+						</div>
+						<!-- ДЕМО ОШИБКИ
+						<div class="message error">Код введен неверно</div>
+						-->
+						<a href="#" class="repeat">Отправить код еще раз</a>
+					</form>
+				</div>
+				<div class="note">Если вы не получили код, проверьте папку спам</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="js-modal-link" data-target="#modal-test3" style="cursor: pointer;padding:20px;text-align:center">Регистрация</div>
+	<div class="modal-wrapper modal-registration" id="modal-test3">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-back" title="Назад"></div>
+				<div class="modal-close" title="Закрыть"></div>
+
+				<div class="h1">Регистрация</div>
+				<div class="h2">Укажите ваши данные для регистрации</div>
+				<div class="form" class="form-forget">
+					<form action="#" method="post">
+						<div class="input">
+							<input type="email" name="email" placeholder="E-mail" maxlength="255">
+							<i>E-mail</i>
+						</div>
+						<div class="input">
+							<input type="text" name="name" placeholder="Имя" maxlength="255">
+							<i>Имя</i>
+						</div>
+						<div class="input input-password hidden">
+							<input type="password" name="password" placeholder="Новый пароль" maxlength="255">
+							<i>Новый пароль</i>
+							<span class="tool"></span>
+						</div>
+						<div class="input input-password hidden">
+							<input type="password" name="password2" placeholder="Повторите новый пароль" maxlength="255">
+							<i>Повторите новый пароль</i>
+							<span class="tool"></span>
+						</div>
+						<!-- ДЕМО ОШИБКИ
+						<div class="message error">Пароли не совпадают</div>
+						-->
+						<button class="btn" disabled="disabled">Зарегистрироваться!</button>
+					</form>
+				</div>
+				<div class="conditions">Используя данный сайт Вы принимаете <a href="#" target="_blank">Условия использования</a> и <a href="#" target="_blank">Политику конфиденциальности</a></div>
+				<div class="continue"><a href="#" class="js-cancel">Продолжить без авторизации</a></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="js-modal-link" data-target="#modal-test4" style="cursor: pointer;padding:20px;text-align:center">Форма входа</div>
+	<div class="modal-wrapper modal-login" id="modal-test4">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-close" title="Закрыть"></div>
+
+				<div class="h1">Познакомимся?</div>
+				<div class="h2">Войдите через социальную сеть</div>
+				<ul class="login-social-media">
+					<li><a href="#"><img src="/assets/images/ico_login_fb.svg" alt="Войти через Facebook" title="Войти через Facebook"></a></li>
+					<li><a href="#"><img src="/assets/images/ico_login_google.svg" alt="Войти через Google" title="Войти через Google"></a></li>
+				</ul>
+
+				<div class="h2">Войдите через e-mail</div>
+				<div class="form form-start">
+					<form action="#" method="post">
+						<div class="input">
+							<input type="email" name="email" placeholder="E-mail" maxlength="255">
+							<i>E-mail</i>
+						</div>
+						<button class="btn" disabled="disabled">На старт!</button>
+					</form>
+				</div>
+				<div class="form hidden form-authorisation">
+					<form action="#" method="post">
+						<div class="input input-clearing">
+							<input type="email" name="email" placeholder="E-mail" maxlength="255">
+							<i>E-mail</i>
+							<span class="tool"></span>
+						</div>
+						<div class="input input-password hidden">
+							<input type="password" name="password" placeholder="Пароль" maxlength="255">
+							<i>Пароль</i>
+							<span class="tool"></span>
+						</div>
+						<button class="btn" disabled="disabled">Войти</button>
+						<a href="#modal-forget" class="forget js-modal-link">Я не помню пароль</a>
+					</form>
+				</div>
+				<div class="conditions">Используя данный сайт Вы принимаете <a href="#" target="_blank">Условия использования</a> и <a href="#" target="_blank">Политику конфиденциальности</a></div>
+				<div class="continue"><a href="#" class="js-cancel">Продолжить без авторизации</a></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="js-modal-link" data-target="#modal-test5" style="cursor: pointer;padding:20px;text-align:center">Сменить пароль</div>
+	<div class="modal-wrapper modal-forget" id="modal-test5">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-close" title="Закрыть"></div>
+
+				<div class="h1">Новый пароль</div>
+				<div class="h2">Введите новый пароль</div>
+				<div class="form form-forget">
+					<form action="#" method="post">
+						<div class="input input-password hidden">
+							<input type="password" name="password" placeholder="Новый пароль" maxlength="255">
+							<i>Новый пароль</i>
+							<span class="tool"></span>
+						</div>
+						<div class="input input-password hidden">
+							<input type="password" name="password2" placeholder="Повторите новый пароль" maxlength="255">
+							<i>Повторите новый пароль</i>
+							<span class="tool"></span>
+						</div>
+						<!-- ДЕМО ОШИБКИ
+						<div class="message error">Пароли не совпадают</div>
+						-->
+						<button class="btn js-modal-link" disabled="disabled" data-target="#modal-confirmation-code">Сменить пароль</button>
+					</form>
+				</div>
+				<a href="#modal-login" class="forget js-modal-link">Не менять пароль</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="js-modal-link" data-target="#modal-test6" style="cursor: pointer;padding:20px;text-align:center">Загрузить фото</div>
+	<div class="modal-wrapper modal-upload-photo" id="modal-test6">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-close" title="Закрыть"></div>
+
+				<div class="h1">Выберите фото</div>
+				
+				<div class="upload-files">
+					<div class="field upload-files-field">
+						<p>Перетащите фото сюда или <a href="#" class="js-upload-file">выберите его на своем компьютере</a></p>
+						<input type="file" name="photo" class="upload-files-input" accept="image/*">
+						<ul>
+							<li><a href="#" class="js-upload-file"><span>Добавить</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
     <script type="text/javascript" src="assets/js/scripts.js?v1"></script>
 </body>
 </html>

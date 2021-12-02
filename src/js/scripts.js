@@ -251,7 +251,7 @@
 		}
 
 		// FORM START
-		var $formStart = $('#form-start');
+		var $formStart = $('#form-start, .form-start');
 		var $formStartEmail = $formStart.find('input[name="email"]');
 		var $formStartSubmit = $formStart.find('.btn');
 		$formStartEmail.on('input', function() {
@@ -271,7 +271,7 @@
 		});
 
 		// FORM AUTHORISATION
-		var $formAuth = $('#form-authorisation');
+		var $formAuth = $('#form-authorisation, .form-authorisation');
 		var $formAuthSubmit = $formAuth.find('.btn');
 		$formAuth.find('input[name="email"], input[name="password"]').on('input', function() {
 			var $formAuthEmail = $formAuth.find('input[name="email"]');
@@ -290,7 +290,7 @@
 		});
 
 		// FORM FORGET
-		var $formForget = $('#form-forget');
+		var $formForget = $('#form-forget, .form-forget');
 		var $formForgetSubmit = $formForget.find('.btn');
 		$formForget.find('input[name="password"], input[name="password2"]').on('input', function() {
 			var $formForgetPswd = $formForget.find('input[name="password"]');
@@ -307,7 +307,7 @@
 		});
 
 		// FORM CONFIRMATION CODE
-		var $formConfirmationCode = $('#form-confirmation-code');
+		var $formConfirmationCode = $('#form-confirmation-code, .form-confirmation-code');
 		function confirmationCodeCheck() {
 			var code = $formConfirmationCode.find('input[name="digit1"]').val() + $formConfirmationCode.find('input[name="digit2"]').val() + $formConfirmationCode.find('input[name="digit3"]').val() + $formConfirmationCode.find('input[name="digit4"]').val();
 			msgUnset($formConfirmationCode.find('.repeat'));
@@ -910,6 +910,83 @@
 				else $(this).addClass('act');
 			}).mouseleave(function() {
 				$(this).removeClass('no-hover');
+			});
+		}
+
+		// UPLOAD FILES
+		if ($('.upload-files').length) {
+			function handleUploadedFiles(files) {
+				// DEMO HANDLE HERE
+				var url = '#';
+				var formData = new FormData();
+			  	formData.append('files', files);
+			  	fetch(url, {
+					method: 'POST',
+				    body: formData
+				})
+				.then(function() {
+					// DEMO
+					$(files).each(function(i, file) {
+						$('.upload-files .upload-files-field ul>li:eq(' + i + ')').html('').addClass('loading');
+					});
+					
+					setTimeout(function() {
+						$(files).each(function(i, file) {
+							$('.upload-files .upload-files-field ul>li:eq(' + i + ')').html('<img src="/assets/images/_item_full.jpg" alt="">').removeClass('loading');
+						});
+
+						$('.upload-files .upload-files-field ul>li>.close').click(function(e) {
+							e.preventDefault();
+							e.stopPropagation();
+
+							$(this).closest('li').html('<a href="#" class="js-upload-file"><span>Добавить</span></a>')
+								.find('.js-upload-file').click(function(e) {
+									e.preventDefault();
+									$('#upload-files-input').click();
+								});
+						});
+					}, 3000);
+					$('.upload-files .upload-files-field ul').append('<li><a href="#" class="js-upload-file"><span>Добавить</span></a></li>');
+					$('.upload-files .upload-files-field ul>li:last .js-upload-file').click(function(e) {
+						e.preventDefault();
+
+						$('.upload-files .upload-files-input').click();
+					});
+				})
+				.catch(function() {
+				});
+			}
+
+			$('.upload-files .upload-files-field').on('dragenter dragover dragleave', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+			});
+
+			$('.upload-files .upload-files-field').on('dragenter dragover', function() {
+				$(this).addClass('dragover');
+			});
+
+			$('.upload-files .upload-files-field').on('dragleave drop', function() {
+				$(this).removeClass('dragover');
+			});
+
+			$('.upload-files .upload-files-field').get(0).addEventListener('drop', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+
+				e = e || window.event;
+				var files = e.dataTransfer.files;
+				handleUploadedFiles(files);
+			});
+
+			$('.upload-files .upload-files-field').on('change', function() {
+				handleUploadedFiles(this.files);
+			});
+
+			$('.upload-files .upload-files-field .js-upload-file').click(function(e) {
+				e.preventDefault();
+
+				$('.upload-files .upload-files-input').click();
 			});
 		}
     }
