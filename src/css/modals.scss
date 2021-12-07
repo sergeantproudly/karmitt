@@ -1936,7 +1936,8 @@
 		}
 
 		.modal-upload-photo > & {
-			width: vw(711);
+			width: vw(520);
+			text-align: center;
 			padding: vw(27) vw(40) vw(40);
 
 			@media (max-width: $adaptive-width-tablet) {
@@ -1999,7 +2000,7 @@
 					ul {
 						position: relative;
 						display: flex;
-						justify-content: flex-start;
+						justify-content: center;
 						flex-wrap: wrap;
 						font-size: 0;
 						z-index: 1;
