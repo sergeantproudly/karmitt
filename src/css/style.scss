@@ -1922,6 +1922,7 @@ footer {
 
 			@media (max-width: $adaptive-width-tablet) {
 				height: vwt(41);
+				min-width: vwt(41);
 				margin-right: vwt(12);
 				@include radius(vwt(8));
 			}
@@ -1931,6 +1932,7 @@ footer {
 				top: 0;
 				left: 0;
 				height: vwm(41);
+				min-width: vwm(41);
 				margin-right: vwm(12);
 				@include radius(vwm(8));
 			}
