@@ -862,6 +862,17 @@ footer {
 					&:before {
 						border-color: $color-green;
 						@include transitions(border-color background-color);
+
+						@media (max-width: $adaptive-width-tablet) {
+							border-color: $color-gray1;
+						}
+					}
+				}
+
+				&.hover {
+					&:before {
+						border-color: $color-green;
+						@include transitions(border-color background-color);
 					}
 				}
 
