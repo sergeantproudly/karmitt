@@ -2712,16 +2712,21 @@ footer {
 
 				a {
 					position: relative;
-					display: block;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
 					height: 100%;
 					z-index: 1;
 				}
 
 				img {
+					/*
 					max-width: 100%;
 					max-height: 100%;
 					width: 100%;
 					height: 100%;
+					*/
+					@include contain();
 				}
 
 				span {
