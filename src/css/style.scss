@@ -1916,12 +1916,12 @@ footer {
 		white-space: normal;
 		overflow: hidden;
 		height: vw(41);
-		width: calc(100% - 10vw);
+		width: vw(1000);
 		margin-left: vw(20);
 
 		@media (max-width: $adaptive-width-tablet) {
 			height: vwt(41);
-			width: calc(100% - 21vw);
+			width: vwt(560);
 			margin-left: vwt(30);
 		}
 
