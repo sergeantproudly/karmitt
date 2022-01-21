@@ -232,13 +232,18 @@ function initElements(element) {
 var resizeCallbacks = [
 ];
 function onResize() {
+	var prevWidth = $('html').data('width');
+	$('html').data('width', $(window).width());
+
 	__isMobile = ($(window).width() <= __widthMobile);
 	__isMobileTablet = ($(window).width() <= __widthMobileTablet);
 	__isMobileTabletMiddle = ($(window).width() <= __widthMobileTabletMiddle);
 	__isMobileTabletSmall = ($(window).width() <= __widthMobileTabletSmall);
 	__isMobileSmall = ($(window).width() <= __widthMobileSmall);
 
-	fadeoutInit();
+	if (prevWidth != $(window).width()) {
+		fadeoutInit();
+	}
 
 	$.each(resizeCallbacks, function(i, func) {
 		func();
@@ -401,7 +406,8 @@ function fadeoutInit(node) {
 			var holderWidth = $(block).width();
 			if (w_child > holderWidth && (!maxWidth || $(window).width() <= maxWidth)) {
 				$(block).addClass('fadeout').removeClass('nowrap').swipe({
-					swipeStatus: function(event, phase, direction, distance) {;
+					swipeStatus: function(event, phase, direction, distance) {
+						console.log(phase);
 						var offset = distance;
 
 						if (phase === $.fn.swipe.phases.PHASE_START) {
@@ -425,8 +431,9 @@ function fadeoutInit(node) {
 							}
 
 						} else if (phase === $.fn.swipe.phases.PHASE_CANCEL) {
-							var origPos = $(this).data('origPos');
-							$(this).scrollLeft(origPos);
+							//var origPos = $(this).data('origPos');
+							//$(this).scrollLeft(origPos);
+							$(this).data('origPos', $(this).scrollLeft());
 
 						} else if (phase === $.fn.swipe.phases.PHASE_END) {
 							$(this).data('origPos', $(this).scrollLeft());
