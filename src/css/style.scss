@@ -1692,15 +1692,12 @@ footer {
 				}
 
 				.title {
-					&:after {
-						content: '';
+					& > .ico {
 						position: absolute;
 						top: vw(19);
 						right: vw(13);
 						width: vw(22);
 						height: vw(20);
-						background: url('../images/ico_tools.svg') no-repeat;
-						background-size: contain;
 
 						@media (max-width: $adaptive-width-tablet) {
 							top: vwt(19);
@@ -1714,6 +1711,11 @@ footer {
 							right: vwm(12);
 							width: vwm(16);
 							height: vwm(15);
+						}
+
+						& > img {
+							@include contain();
+							min-width: 100%;
 						}
 					}
 
