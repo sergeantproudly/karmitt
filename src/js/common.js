@@ -401,7 +401,7 @@ function fadeoutInit(node) {
 			var holderWidth = $(block).width();
 			if (w_child > holderWidth && (!maxWidth || $(window).width() <= maxWidth)) {
 				$(block).addClass('fadeout').removeClass('nowrap').swipe({
-					swipeStatus: function(event, phase, direction, distance) {
+					swipeStatus: function(event, phase, direction, distance) {;
 						var offset = distance;
 
 						if (phase === $.fn.swipe.phases.PHASE_START) {
