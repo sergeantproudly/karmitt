@@ -540,6 +540,64 @@
 	        else
 	            return false;
 		});
+		$formChooseDuration.find('.time-holder2 input').on('keydown', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			var key;
+	        var keychar;
+	        if (window.event) 
+	        	key = window.event.keyCode;
+	        else if 
+	        	(e) key = e.which;
+	        else 
+	        	return true;
+	        keychar = String.fromCharCode(key);
+	        if ((key==null) || (key==0) || (key==8) || (key==9) || (key==13) || (key==27)) {
+	        	var newval = $(this).val().slice(0, -1);
+	        	$(this).val(newval).removeClass('filled');
+	        	$(this).siblings('.colon').removeClass('filled');
+	        	if (newval.length == 0) {
+	        		if ($(this).next('input').length) {
+		        		$(this).next('input').focus();
+		        	} else {
+		        		if ($(this).next('span').next('input').length) {
+		        			$(this).next('span').next('input').focus();
+		        		} else {
+		        			$(this).blur();
+		        		}
+		        	}
+	        	}
+	        	
+	        	if (chooseDurationCheck()) $btnChooseDuration.removeAttr('disabled');
+	        	else $btnChooseDuration.attr('disabled', 'disabled');
+	            return true;
+	        }
+	        else if (('0123456789').indexOf(keychar) > -1) {
+	        	var newval = $(this).val() + keychar;
+	        	$(this).val(newval).addClass('filled');
+	        	if (newval.length > 1) {
+	        		if ($(this).next('input').length) {
+		        		$(this).next('input').focus();
+		        	} else {
+		        		if ($(this).next('span').next('input').length) {
+		        			$(this).next('span').next('input').focus();
+		        		} else {
+		        			$(this).blur();
+		        		}
+		        	}
+		        	if (!$formChooseDuration.find('.time-holder2 input').not('.filled').length) {
+		        		$(this).siblings('.colon').addClass('filled');
+		        	}
+	        	}
+	        	
+	        	if (chooseDurationCheck()) $btnChooseDuration.removeAttr('disabled');
+	        	else $btnChooseDuration.attr('disabled', 'disabled');
+	            return true;
+	        }
+	        else
+	            return false;
+		});
 		$formChooseDuration.on('submit', function(e) {
 			e.preventDefault();
 
