@@ -103,7 +103,7 @@ function initElements(element) {
 		});
 	});
 
-	$element.find('input[type="checkbox"], input[type="radio"]').checkboxradio();
+	//$element.find('input[type="checkbox"], input[type="radio"]').checkboxradio();
 
 	$element.find('.file-upload').each(function(index, block) {
 		$(block).find('.label').click(function(e){

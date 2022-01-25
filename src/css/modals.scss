@@ -1056,10 +1056,12 @@
 					position: relative;
 					padding: vw(15) vw(20) vw(12) vw(32);
 					display: block;
+					@include fs(16);
 					height: auto;
 					min-height: 0;
 					border-bottom: 1px solid $color-gray1;
 					@extend %highlight-cancel;
+					cursor: pointer;
 
 					@media (max-width: $adaptive-width-tablet) {
 						padding: vwt(15) vwt(20) vwt(12) vwt(32);
@@ -1098,6 +1100,77 @@
 
 						@media (max-width: $adaptive-width-mobile) {
 							top: vwm(17);
+						}
+					}
+
+					input[type="radio"],
+					input[type="checkbox"] {
+						position: absolute;
+						z-index: -1;
+						opacity: 0;
+
+						& + .header {
+							&:before {
+								content: '';
+								position: absolute;
+								top: vw(17);
+								left: 0;
+								width: vw(20);
+								height: vw(20);
+								background-color: #fff;
+								border: 1px solid #BEBAB5;
+								@include radius(vw(3));
+								@include transition(all, 150ms);
+
+								@media (max-width: $adaptive-width-tablet) {
+									top: vwt(17);
+									width: vwt(20);
+									height: vwt(20);
+									@include radius(vwt(3));
+								}
+
+								@media (max-width: $adaptive-width-mobile) {
+									top: vwm(17);
+									width: vwm(20);
+									height: vwm(20);
+									@include radius(vwm(3));
+								}
+							}						
+						}
+
+						&:checked {
+							& + .header {
+								&:before {
+									background-color: $color-green;
+									border-color: $color-green;
+									@include transition(all, 150ms);
+								}
+
+								&:after {
+									content: '';
+									position: absolute;
+									top: vw(24);
+									left: vw(6);
+									background: url('../images/ico_v_bet.svg') no-repeat;
+									background-size: contain;
+									width: vw(12);
+									height: vw(9);
+
+									@media (max-width: $adaptive-width-tablet) {
+										top: vwt(24);
+										left: vwt(6);
+										width: vwt(12);
+										height: vwt(9);
+									}
+
+									@media (max-width: $adaptive-width-mobile) {
+										top: vwm(24);
+										left: vwm(6);
+										width: vwm(12);
+										height: vwm(9);	
+									}
+								}
+							}
 						}
 					}
 
