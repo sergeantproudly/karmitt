@@ -6,6 +6,7 @@
 		width: vw(90);
 		height: vw(89);
 		@extend %highlight-cancel;
+		transform: translate(-50%, -50%);
 
 		@media (max-width: $adaptive-width-tablet) {
 			width: vwt(90);
@@ -30,6 +31,7 @@
 		padding: vw(16.2) vw(19);
 		text-align: center;
 		@extend %highlight-cancel;
+		transform: translate(-50%, -100%);
 
 		@media (max-width: $adaptive-width-tablet) {
 			width: vwt(96);
@@ -326,6 +328,7 @@
 		color: #fff;
 		padding: vw(16) vw(18.8);
 		text-align: center;
+		transform: translate(-50%, -100%);
 
 		@media (max-width: $adaptive-width-tablet) {
 			width: vwt(96);
@@ -342,6 +345,27 @@
 		img {
 			width: 100%;
 			@include radius(vw(1000));
+		}
+
+		.img-holder {
+			display: block;
+			width: vw(58.4);
+			height: vw(58.4);
+
+			@media (max-width: $adaptive-width-tablet) {
+				width: vwt(58.4);
+				height: vwt(58.4);
+			}
+
+			@media (max-width: $adaptive-width-mobile) {
+				width: vwm(58.4);
+				height: vwm(58.4);
+			}
+
+			& > img {
+				width: auto;
+				@include fit();
+			}
 		}
 	}
 }
