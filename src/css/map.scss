@@ -19,6 +19,24 @@
 		}
 	}
 
+	.map-img {
+		position: absolute;
+		@extend %highlight-cancel;
+		transform: translate(-50%, -50%);
+
+		img {
+			width: vw(90);
+
+			@media (max-width: $adaptive-width-tablet) {
+				width: vwt(90);
+			}
+
+			@media (max-width: $adaptive-width-mobile) {
+				width: vwm(90);
+			}
+		}
+	}
+
 	.map-marker {
 		position: absolute;
 		background: url('../images/placeholder_item_bg.png') no-repeat;
