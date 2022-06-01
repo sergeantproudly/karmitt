@@ -1080,6 +1080,13 @@
 				$('.upload-files .upload-files-input').click();
 			});
 		}
+
+		// MAIN BANNER
+		if ($('.main-banner').length) {
+			$('.main-banner .close').click(function() {
+				$('.main-banner').stop().slideUp(__animationSpeed);
+			});
+		}
     }
 
     initPage();
