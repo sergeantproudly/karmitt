@@ -9291,6 +9291,7 @@ main.page500 {
 		min-height: vw(229);
 		background: linear-gradient(266.67deg, #AAECE1 0%, #DBFFFA 65.78%, #EDFCFA 90.46%);
 		padding: vw(45) vw(406) vw(45) vw(40);
+		overflow: hidden;
 		@include radius(vw(20));
 
 		@media (max-width: $adaptive-width-tablet) {
