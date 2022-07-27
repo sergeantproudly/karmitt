@@ -8142,12 +8142,14 @@ main.chat {
 					& > svg,
 					& > img,
 					path {
-						fill: $color-gray2;
+						/*fill: $color-gray2;*/
+						fill: $color-green;
 						@include transition();
 					}
 
 					.stroked {
-						stroke: $color-gray2;
+						/*stroke: $color-gray2;*/
+						stroke: $color-green;
 						@include transition();
 					}
 
