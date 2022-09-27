@@ -5364,6 +5364,27 @@ footer {
 		}
 	}
 
+	.delete-account {
+		display: block;
+		@include fs(17);
+		padding: vw(22) 0;
+		text-decoration: none;
+		color: $color-red;
+
+		@media (max-width: $adaptive-width-tablet) {
+			padding: vwt(22) 0;
+		}
+
+		@media (max-width: $adaptive-width-mobile) {
+			padding: vwm(22) 0;
+		}
+
+		& > a {
+			text-decoration: none;
+			color: $color-red;
+		}
+	}
+
 	.tabs {
 		margin-bottom: vw(20);
 
