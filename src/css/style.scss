@@ -6986,7 +6986,7 @@ main.chat {
 					display: block;
 					position: absolute;
 					bottom: vw(-2);
-					right: vw(-4);
+					left: vw(-4);
 					width: vw(11);
 					height: vw(19);
 					background: url('../images/chat_be_gray.svg') no-repeat;
@@ -6994,14 +6994,14 @@ main.chat {
 
 					@media (max-width: $adaptive-width-tablet) {
 						bottom: vwt(-2);
-						right: vwt(-4);
+						left: vwt(-4);
 						width: vwt(11);
 						height: vwt(19);
 					}
 
 					@media (max-width: $adaptive-width-mobile) {
 						bottom: vwm(-2);
-						right: vwm(-4);
+						left: vwm(-4);
 						width: vwm(11);
 						height: vwm(19);
 					}
@@ -7045,18 +7045,18 @@ main.chat {
 
 					&:after {
 						bottom: vw(-2);
-						left: vw(-4);
-						right: auto;
+						right: vw(-4);
+						left: auto;
 						background-image: url('../images/chat_be_green.svg');
 
 						@media (max-width: $adaptive-width-tablet) {
 							bottom: vwt(-2);
-							left: vwt(-4);
+							right: vwt(-4);
 						}
 
 						@media (max-width: $adaptive-width-mobile) {
 							bottom: vwm(-2);
-							left: vwm(-4);
+							right: vwm(-4);
 						}
 					}
 
