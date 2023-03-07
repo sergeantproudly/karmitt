@@ -7571,6 +7571,30 @@ main.chat {
 							left: vw(14);
 							width: vw(18);
 							height: vw(18);
+							background-image: url('../images/ico_basket.svg');
+
+							@media (max-width: $adaptive-width-tablet) {
+								top: vwt(14);
+								left: vwt(17);
+								width: vwt(18);
+								height: vwt(18);
+							}
+
+							@media (max-width: $adaptive-width-mobile) {
+								top: vwm(14);
+								left: vwm(17);
+								width: vwm(18);
+								height: vwm(18);
+							}
+						}
+					}
+
+                                        &.book {
+						&:after {
+							top: vw(14);
+							left: vw(14);
+							width: vw(18);
+							height: vw(18);
 							background-image: url('../images/ico_approve.svg');
 
 							@media (max-width: $adaptive-width-tablet) {

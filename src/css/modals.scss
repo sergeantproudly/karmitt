@@ -1375,6 +1375,87 @@
 			}
 		}
 
+                #modal-booking > & {
+			width: vw(462);
+			padding: vw(43) vw(40) vw(59);
+
+			@media (max-width: $adaptive-width-tablet) {
+				width: vwt(462);
+				padding: vwt(43) vwt(40) vwt(59);
+			}
+
+			@media (max-width: $adaptive-width-mobile) {
+				width: 100%;
+				padding: vwm(16);
+				text-align: center;
+			}
+
+			h1,
+			.h1 {
+				@include fs(27);
+				margin-bottom: vw(30);
+
+				@media (max-width: $adaptive-width-tablet) {
+					margin-bottom: vwt(30);
+				}
+
+				@media (max-width: $adaptive-width-mobile) {
+					@include fs(22);
+					margin-bottom: vwm(23);
+				}
+			}
+
+			.btn-line {
+				display: flex;
+				justify-content: space-between;
+
+				@media (max-width: $adaptive-width-mobile) {
+					flex-direction: column;
+				}
+
+				.btn {
+					display: inline-block;
+					width: 48.4%;
+					margin-left: 3.9%;
+
+					@media (max-width: $adaptive-width-mobile) {
+						width: 100%;
+						margin: 0 0 vwm(20);
+					}
+
+					&:first-child {
+						margin-left: 0;
+					}
+
+					&.cancel {
+						@include fs(16);
+						padding: vw(14) vw(16);
+						background-color: transparent;
+						color: $color-button;
+						border: 1px solid $color-button;
+
+						@media (max-width: $adaptive-width-tablet) {
+							padding: vwt(14) vwt(16);
+						}
+
+						@media (max-width: $adaptive-width-mobile) {
+							padding: vwm(14) vwm(16);
+						}
+
+						&:hover {
+							border-color: $color-button-hover;
+							color: $color-button-hover;
+						}
+
+						&:active {
+							border-color: $color-button-active;
+							color: $color-button-active;
+						}
+					}
+				}
+			}
+		}
+
 		#modal-end-chat > & {
 			width: vw(462);
 			padding: vw(43) vw(40) vw(59);
