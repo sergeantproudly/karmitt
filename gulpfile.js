@@ -1,17 +1,22 @@
 'use strict';
 
-const gulp = require('gulp');
-const del = require('del');
-const browserSync = require('browser-sync').create();
 
-const concat = require('gulp-concat');
-const autoprefixer = require('gulp-autoprefixer');
-const cleanCSS = require('gulp-clean-css');
-const sass = require('gulp-sass');
-const sourcemaps = require('gulp-sourcemaps');   
-const uglify = require('gulp-uglify');
-const imagemin = require('gulp-imagemin');
-const replace = require('gulp-replace');
+import gulp from "gulp";
+import del from "del";
+import browserSync from "browser-sync";
+browserSync.create();
+import concat from 'gulp-concat';
+import autoprefixer from 'gulp-autoprefixer';
+import cleanCSS from 'gulp-clean-css';
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+import sourcemaps from 'gulp-sourcemaps';
+import uglify from 'gulp-uglify';
+import imagemin from "gulp-imagemin";
+import replace from "gulp-replace";
+import nodeSass from 'node-sass';
+
+const sass = gulpSass(dartSass);
 
 const assetsVersion = 2;
 
@@ -31,46 +36,50 @@ const jsFiles = [
 	'./src/js/scripts.js'
 ];
 
-sass.compiler = require('node-sass');
+sass.compiler = nodeSass;
+
 
 function styles() {
 	return gulp.src('./src/css/style.scss')
-				/*.pipe(sourcemaps.init())*/
-				.pipe(concat('style.css'))		
-				.pipe(autoprefixer({
-		            overrideBrowsersList: ['> 0.1%'],
-		            cascade: false
-		        }))
-		        /*
-		        .pipe(cleanCSS({
-		        	level: 2
-		        }))
-		        */
-		        .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
-		        /*.pipe(sourcemaps.write())*/
-				.pipe(gulp.dest('./assets/css'))
-				.pipe(browserSync.stream());
+		/*.pipe(sourcemaps.init())*/
+		.pipe(concat('style.css'))
+		.pipe(autoprefixer({
+			overrideBrowsersList: ['> 0.1%'],
+			cascade: false
+		}))
+		/*
+		.pipe(cleanCSS({
+			level: 2
+		}))
+		*/
+		// .pipe(sass.sync({ outputStyle: 'compressed' }).on('error', sass.logError))
+		.pipe(sass({
+			outputStyle: 'expanded'
+		}))
+		/*.pipe(sourcemaps.write())*/
+		.pipe(gulp.dest('./assets/css'))
+		.pipe(browserSync.stream());
 }
 
 function scripts() {
 	return gulp.src(jsFiles)
-				.pipe(concat('scripts.js'))
-				.pipe(uglify({
-					toplevel: true
-				}))
-				.pipe(gulp.dest('./assets/js'))
-				.pipe(browserSync.stream());
+		.pipe(concat('scripts.js'))
+		.pipe(uglify({
+			toplevel: true
+		}))
+		.pipe(gulp.dest('./assets/js'))
+		.pipe(browserSync.stream());
 }
 
 function images() {
 	return gulp.src('./src/images/**/*.!(svg)')
-        .pipe(imagemin())
-        .pipe(gulp.dest('./assets/images'));
+		.pipe(imagemin())
+		.pipe(gulp.dest('./assets/images'));
 }
 
 function imagesSvg() {
 	return gulp.src('./src/images/**/*.svg')
-        .pipe(gulp.dest('./assets/images'));
+		.pipe(gulp.dest('./assets/images'));
 }
 
 function fonts() {
@@ -80,15 +89,15 @@ function fonts() {
 
 function copy() {
 	return gulp.src('./src/images/*')
-        .pipe(gulp.dest('./assets/images'));
+		.pipe(gulp.dest('./assets/images'));
 }
 
 function watch() {
 	browserSync.init({
-        server: {
-            baseDir: "./"
-        }
-    });
+		server: {
+			baseDir: "./"
+		}
+	});
 
 	gulp.watch('./src/css/**/*.scss', styles);
 	gulp.watch('./src/js/**/*.js', scripts);
@@ -103,7 +112,7 @@ function clean() {
 function updateAssetsVersion() {
 	return gulp.src('./*.html')
 		.pipe(replace('?#version', '?v' + assetsVersion))
-		.pipe(replace('?v' + (assetsVersion-1), '?v' + assetsVersion))
+		.pipe(replace('?v' + (assetsVersion - 1), '?v' + assetsVersion))
 		.pipe(gulp.dest('./'));
 }
 
@@ -114,7 +123,7 @@ gulp.task('watch', watch);
 gulp.task('updateAssetsVersion', updateAssetsVersion);
 
 gulp.task('build', gulp.series(clean,
-						gulp.parallel(styles, scripts, images, imagesSvg, fonts, updateAssetsVersion)
-					));
+	gulp.parallel(styles, scripts, images, imagesSvg, fonts, updateAssetsVersion)
+));
 
 gulp.task('dev', gulp.series('build', 'watch'));
