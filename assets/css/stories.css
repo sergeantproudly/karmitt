@@ -1,0 +1,290 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+}
+
+html * {
+  max-height: 999999px;
+}
+
+img {
+  border: 0;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url("../fonts/Rubik Regular.eot");
+  src: url("../fonts/Rubik Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Rubik Regular.svg#Rubik") format("svg"), url("../fonts/Rubik Regular.woff2") format("woff2"), url("../fonts/Rubik Regular.woff") format("woff"), url("../fonts/Rubik Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url("../fonts/Rubik Medium.eot");
+  src: url("../fonts/Rubik Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/Rubik Medium.svg#Rubik") format("svg"), url("../fonts/Rubik Medium.woff2") format("woff2"), url("../fonts/Rubik Medium.woff") format("woff"), url("../fonts/Rubik Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/*
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik SemiBold.eot');
+    src: url('../fonts/Rubik SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Rubik SemiBold.svg#Rubik') format('svg'),
+    url('../fonts/Rubik SemiBold.woff2') format('woff2'),
+    url('../fonts/Rubik SemiBold.woff') format('woff'),
+    url('../fonts/Rubik SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+*/
+html {
+  font-size: 4.44444vw;
+}
+
+body {
+  font-family: "Rubik", "Arial", sans-serif;
+  margin: 0 auto;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.card {
+  background: linear-gradient(340deg, #1addba 13.77%, #00c1aa 66.03%);
+  color: #fff;
+  height: 100vh;
+  padding: 15vh 1.66667rem 0;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -8.33333rem;
+  right: -11.72917rem;
+  width: 21.27083rem;
+  height: 21.27083rem;
+  border-radius: 50%;
+  background: #64fdb4;
+  -webkit-filter: blur(4.16667rem);
+  filter: blur(4.16667rem);
+  z-index: -1;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 60%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  height: 50vh;
+  width: 35.41667rem;
+  opacity: 0.2;
+  background-repeat: no-repeat;
+  background-position: center calc(100% + 5rem);
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1103' height='1140' viewBox='0 0 1103 1140' fill='none'%3E%3Cpath d='M1093.82 639.705C1092.84 662.069 1083.03 683.13 1066.53 698.257L693.027 1041.81C556.905 1166.1 363.794 1181.77 195.231 1031.69C132.198 975.565 -61.0395 739.629 19.3356 300.435C29.3105 245.929 70.7595 207.633 123.088 209.783C134.639 210.132 146.003 212.786 156.513 217.589C167.024 222.392 176.468 229.246 184.293 237.75C200.839 255.758 210.048 280.851 208.863 308.228C208.863 308.228 205.912 375.981 204.331 412.322C203.614 428.795 207.07 438.387 211.771 443.503C218.025 450.309 225.324 450.252 230.272 445.705L690.59 22.736C698.742 15.2265 708.294 9.39618 718.699 5.57795C729.104 1.75974 740.16 0.0283699 751.235 0.482777C762.309 0.937184 773.186 3.56841 783.243 8.22627C793.301 12.8841 802.343 19.4774 809.852 27.6296C838.752 59.0916 842.737 110.836 812.481 138.636C812.385 138.759 583.845 348.435 527.627 400.026C527.505 400.127 527.372 400.199 527.252 400.309L505.342 420.441C504.011 421.661 502.933 423.13 502.171 424.766C501.408 426.402 500.975 428.172 500.896 429.976C500.818 431.779 501.095 433.58 501.713 435.276C502.33 436.972 503.281 438.535 504.5 439.866C506.971 442.544 510.404 444.131 514.044 444.28C517.685 444.428 521.236 443.124 523.916 440.655L943.971 54.6824C960.557 39.6936 982.419 31.9079 1004.75 33.0377C1027.07 34.1676 1048.04 44.1205 1063.03 60.7071C1078.01 77.2937 1085.8 99.1553 1084.67 121.482C1083.54 143.81 1073.59 164.773 1057 179.762L635.656 567.017C634.328 568.213 633.25 569.659 632.485 571.274C631.72 572.888 631.282 574.638 631.198 576.423C631.113 578.207 631.383 579.991 631.992 581.67C632.601 583.35 633.537 584.892 634.746 586.208C635.955 587.523 637.412 588.586 639.034 589.335C640.657 590.083 642.411 590.503 644.196 590.569C645.982 590.635 647.762 590.347 649.436 589.721C651.109 589.095 652.641 588.143 653.944 586.921L970.544 295.993C1001.84 267.237 1051.53 277.499 1080.2 308.701C1087.68 316.867 1093.48 326.428 1097.27 336.838C1101.05 347.247 1102.74 358.3 1102.25 369.364C1101.76 380.429 1099.09 391.287 1094.39 401.319C1089.7 411.351 1083.08 420.359 1074.9 427.829L761.024 716.228C759.749 717.396 758.717 718.804 757.987 720.372C757.256 721.939 756.842 723.634 756.767 725.362C756.691 727.089 756.957 728.815 757.549 730.439C758.141 732.064 759.046 733.556 760.215 734.831C765.132 740.182 776.113 738.321 781.478 733.392L965.457 564.279C993.919 538.125 1043.96 548.803 1071.71 579.005C1086.84 595.507 1094.79 617.341 1093.82 639.705Z' fill='%23C9FFD8'/%3E%3C/svg%3E");
+  z-index: -1;
+}
+
+.card.card-orange {
+  background: linear-gradient(160deg, #f38c60 16.22%, #f4c175 83.93%);
+}
+
+.card.card-orange::before {
+  background: #fdc964;
+}
+
+.card.card-red {
+  background: linear-gradient(159deg, #e4574e 11.66%, #f38360 47.1%);
+}
+
+.card.card-red::before {
+  background: #fb6666;
+}
+
+.card__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.card__header-image {
+  margin-top: -2rem;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  max-width: 6.89583rem;
+  width: 100%;
+}
+
+.card__header-image svg {
+  width: 100%;
+  height: auto;
+}
+
+.card__header-image.image-lg {
+  max-width: 10.47917rem;
+  margin-top: -1rem;
+  margin-right: -1.35rem;
+}
+
+.card__title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 130%;
+}
+
+.card__subtitle {
+  margin-top: 0.5rem;
+  font-size: 0.83333rem;
+  line-height: 130%;
+  max-width: 13.875rem;
+}
+
+.card__subtitle br {
+  content: "";
+  display: block;
+  margin-bottom: 0.85rem;
+}
+
+.card__body {
+  margin-top: 1.8125rem;
+  position: relative;
+  z-index: 2;
+}
+
+.card__caption {
+  font-size: 0.83333rem;
+  font-weight: 500;
+  line-height: 130%;
+}
+
+.card__info {
+  position: relative;
+  z-index: 2;
+  margin-top: 0.625rem;
+  font-size: 0.83333rem;
+  padding-left: 1rem;
+  line-height: 130%;
+  max-width: 15rem;
+  border-left: 0.125rem solid #fff;
+}
+
+.card__info br {
+  content: "";
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.card__info img {
+  width: 1.04167rem;
+  vertical-align: middle;
+}
+
+.card__list {
+  margin-top: 0.45833rem;
+  font-size: 0.83333rem;
+  line-height: 130%;
+  font-weight: 400;
+  max-width: 9.375rem;
+  padding: 0;
+  list-style: none;
+}
+
+.card__list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.card__list li:not(:last-child) {
+  margin-bottom: 0.58333rem;
+}
+
+.card__list li::before {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='22' viewBox='0 0 23 22' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M19.7448 4.44081C21.765 6.84852 22.9076 9.97793 22.129 13.23C21.3359 16.5431 18.9643 19.5436 15.776 21.0189C12.7904 22.4004 9.62345 21.5393 6.82806 20.3101C4.14846 19.1319 1.65934 17.3844 1.01219 14.5272C0.354165 11.6219 1.65035 8.55445 3.58474 5.9905C5.60337 3.31489 8.28235 0.903483 11.5253 0.592493C14.8542 0.273262 17.7326 2.04268 19.7448 4.44081Z' fill='white'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  margin-top: 0.29167rem;
+  margin-right: 0.54167rem;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.card__image {
+  position: relative;
+  z-index: 1;
+  margin-top: -1.5rem;
+  margin-left: -0.75rem;
+  margin-right: -1rem;
+}
+
+.card__image.lg-offset {
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  margin-top: -5.75rem;
+}
+
+.card__image.xl-offset {
+  margin-top: -1rem;
+}
+
+.card__image img {
+  max-width: 100%;
+}

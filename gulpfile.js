@@ -61,6 +61,29 @@ function styles() {
 		.pipe(browserSync.stream());
 }
 
+function stylesCardStories() {
+	return gulp.src('./src/css/stories.scss')
+		/*.pipe(sourcemaps.init())*/
+		.pipe(concat('stories.css'))
+		.pipe(autoprefixer({
+			grid: true,
+			overrideBrowserslist: ['last 3 versions'],
+			cascade: true
+		}))
+		/*
+		.pipe(cleanCSS({
+			level: 2
+		}))
+		*/
+		// .pipe(sass.sync({ outputStyle: 'compressed' }).on('error', sass.logError))
+		.pipe(sass({
+			outputStyle: 'expanded'
+		}))
+		/*.pipe(sourcemaps.write())*/
+		.pipe(gulp.dest('./assets/css'))
+		.pipe(browserSync.stream());
+}
+
 function scripts() {
 	return gulp.src(jsFiles)
 		.pipe(concat('scripts.js'))
@@ -99,7 +122,7 @@ function watch() {
 		}
 	});
 
-	gulp.watch('./src/css/**/*.scss', styles);
+	gulp.watch('./src/css/**/*.scss', gulp.parallel(styles, stylesCardStories));
 	gulp.watch('./src/js/**/*.js', scripts);
 	gulp.watch('./src/images/**/*', copy);
 	gulp.watch('./*.html').on('change', browserSync.reload);
@@ -123,7 +146,7 @@ gulp.task('watch', watch);
 gulp.task('updateAssetsVersion', updateAssetsVersion);
 
 gulp.task('build', gulp.series(clean,
-	gulp.parallel(styles, scripts, images, imagesSvg, fonts, updateAssetsVersion)
+	gulp.parallel(styles, stylesCardStories, scripts, images, imagesSvg, fonts, updateAssetsVersion)
 ));
 
 gulp.task('dev', gulp.series('build', 'watch'));
