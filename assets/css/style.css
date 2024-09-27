@@ -27579,18 +27579,19 @@ main.page500 .to-main {
 .banner {
   position: relative;
   overflow: hidden;
-  border-radius: 0.55556vw;
+  border-radius: 1.38889vw;
+  margin-bottom: 1.11111vw;
 }
 
 @media (max-width: 1000px) {
   .banner {
-    border-radius: 0.83333vw;
+    border-radius: 1.66667vw;
   }
 }
 
 @media (max-width: 540px) {
   .banner {
-    border-radius: 1.66667vw;
+    border-radius: 2.5vw;
   }
 }
 
@@ -27598,8 +27599,8 @@ main.page500 .to-main {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1.11111vw;
-  aspect-ratio: 2.4;
+  padding: 0.55556vw 1.25vw;
+  aspect-ratio: 3.2;
   color: #fff;
   text-decoration: none;
 }
@@ -27643,8 +27644,8 @@ main.page500 .to-main {
   top: -1px;
   right: -1px;
   border: 0;
-  width: 1.66667vw;
-  height: 1.66667vw;
+  width: 2.77778vw;
+  height: 2.77778vw;
   border-radius: 0 0 0 45%;
   display: flex;
   justify-content: center;
@@ -27652,7 +27653,7 @@ main.page500 .to-main {
   background-image: url("../images/ico_close_sidebar.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 50%;
+  background-size: 35%;
   background-color: rgba(255, 255, 255, 0.65);
   transition: background-color 0.3s ease 0s;
   cursor: pointer;
@@ -27660,6 +27661,7 @@ main.page500 .to-main {
 
 @media (max-width: 1000px) {
   .banner-close {
+    background-size: 50%;
     width: 3.47222vw;
     height: 3.47222vw;
   }

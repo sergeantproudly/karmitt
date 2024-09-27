@@ -9507,19 +9507,20 @@ main.page500 {
 .banner {
 	position: relative;
 	overflow: hidden;
-	border-radius: vw(8);
+	border-radius: vw(20);
+	margin-bottom: vw(16);
 	@media (max-width: $adaptive-width-tablet) {
-		border-radius: vw(12);
+		border-radius: vw(24);
 	}
 	@media (max-width: $adaptive-width-mobile) {
-		border-radius: vw(24);
+		border-radius: vw(36);
 	}
 	&-main {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
-		padding: vw(16);
-		aspect-ratio: 2.4;
+		padding: vw(8) vw(18);
+		aspect-ratio: 3.2;
 		@media (max-width: $adaptive-width-mobile) {
 			padding: vw(24);
 			border-radius: vw(60);
@@ -9557,8 +9558,8 @@ main.page500 {
 		top: -1px;
 		right: -1px;
 		border: 0;
-		width: vw(24);
-		height: vw(24);
+		width: vw(40);
+		height: vw(40);
 		border-radius: 0 0 0 45%;
 		display: flex;
 		justify-content: center;
@@ -9566,10 +9567,11 @@ main.page500 {
 		background-image: url('../images/ico_close_sidebar.svg');
 		background-repeat: no-repeat;
 		background-position: center;
-		background-size: 50%;
+		background-size: 35%;
 		background-color: rgba($color: #fff, $alpha: 0.65);
 		transition: background-color 0.3s ease 0s;
 		@media (max-width: $adaptive-width-tablet) {
+			background-size: 50%;
 			width: vw(50);
 			height: vw(50);
 		}
